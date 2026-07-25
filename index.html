@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dados Bancários</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<style>
+  :root{
+    --navy: #1E3A5F;
+    --navy-dark: #142A45;
+    --teal: #3B7D82;
+    --paper: #FFFFFF;
+    --paper-edge: #D7DEE6;
+    --bg: #EEF1F5;
+    --ink: #23303F;
+    --muted: #64748B;
+    --field-empty: #B45309;
+    --danger: #B3261E;
+    --ok: #1E7A4C;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  header.top{
+    background: #A0522D;
+    color: #fff;
+    padding: 28px 24px 24px;
+  }
+  header.top .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  header.top .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 11px;
+    color: #FFFFFF;
+    font-weight: 600;
+    margin-bottom: 6px;
+    opacity: .85;
+  }
+  header.top h1{
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  header.top p{
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    max-width: 640px;
+    line-height: 1.5;
+    opacity: .92;
+  }
+
+  .steps{
+    display:flex;
+    gap: 18px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .steps .step{
+    display:flex;
+    align-items:center;
+    gap: 8px;
+    font-size: 13px;
+    color: #fff;
+  }
+  .steps .num{
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.4);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 11px; font-weight: 700;
+    color: #fff;
+  }
+
+  main{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 24px 80px;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px){
+    main{ grid-template-columns: 1fr; }
+  }
+
+  .panel{
+    background: var(--paper);
+    border: 1px solid var(--paper-edge);
+    border-radius: 10px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+  }
+  @media (max-width: 900px){
+    .panel{ position: static; }
+  }
+
+  .panel h2{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--teal);
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  .panel .sub{
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+
+  fieldset{
+    border: none;
+    margin: 0 0 18px;
+    padding: 0;
+  }
+  fieldset legend{
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    padding: 0 0 8px;
+    border-bottom: 1px solid #EEF1F5;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  label{
+    display:block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .field{ margin-bottom: 14px; }
+  .field small{
+    display:block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .row2{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  input[type=text]{
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-family: inherit;
+    color: var(--ink);
+    background: #FBFCFD;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  input[type=text]:focus{
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(59,125,130,.15);
+    background: #fff;
+  }
+  input[type=text].filled{ border-color: #9CC7A1; background: #F5FBF6; }
+
+  textarea{
+    width: 100%;
+    min-height: 92px;
+    padding: 9px 10px;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-family: inherit;
+    color: var(--ink);
+    background: #FBFCFD;
+    resize: vertical;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  textarea:focus{
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(59,125,130,.15);
+    background: #fff;
+  }
+
+  .paste-box{
+    background: #F5F8FA;
+    border: 1px dashed #B9C7D4;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 18px;
+  }
+  .paste-box .paste-label{
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .paste-box small{
+    display:block;
+    font-size: 11px;
+    color: var(--muted);
+    margin: 4px 0 10px;
+  }
+  button.pull{
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+  }
+  button.pull:hover{ background: #326E72; }
+  .pull-status{
+    font-size: 11.5px;
+    margin-top: 8px;
+    min-height: 14px;
+  }
+  .pull-status.ok{ color: var(--ok); font-weight: 600; }
+  .pull-status.warn{ color: var(--field-empty); font-weight: 600; }
+
+  .actions{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  button.primary{
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    padding: 13px 16px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    transition: background .15s, transform .05s;
+  }
+  button.primary:hover{ background: var(--navy-dark); }
+  button.primary:active{ transform: translateY(1px); }
+
+  button.secondary{
+    background: none;
+    border: 1px solid #CBD5E1;
+    color: var(--ink);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button.secondary:hover{ background: #F5F7FA; }
+
+  .status-line{
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: center;
+  }
+  .status-line strong{ color: var(--ok); }
+
+  /* ---------- Document preview ---------- */
+  .sheet-wrap{
+    overflow-x: auto;
+    padding: 4px;
+  }
+
+  .preview-toolbar{
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #EEF1F5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .preview-toolbar > button{
+    width: 100%;
+    background: none;
+    border: 1px solid #CBD5E1;
+    color: var(--ink);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .preview-toolbar > button:hover{ background: #F5F7FA; }
+  .zoom-controls{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .zoom-controls span{
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-right: 2px;
+  }
+  .zoom-controls .zoom-btn{
+    flex: 1;
+    background: none;
+    border: 1px solid #CBD5E1;
+    color: var(--ink);
+    padding: 7px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .zoom-controls .zoom-btn:hover{ background: #F5F7FA; }
+  .zoom-controls .zoom-btn.active{
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+  main.preview-hidden{
+    grid-template-columns: 1fr;
+  }
+  main.preview-hidden .panel{
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .sheet{
+    background: var(--paper);
+    width: 8.5in;
+    min-height: 11in;
+    margin: 0 auto;
+    box-shadow: 0 2px 6px rgba(20,30,50,.08), 0 12px 30px rgba(20,30,50,.10);
+    border: 1px solid var(--paper-edge);
+    padding: 0.7in 0.85in 0.5in;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.2pt;
+    line-height: 1.35;
+    color: #111;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sheet .internal-tag{
+    text-align: right;
+    font-size: 9pt;
+    margin: 0 0 26pt;
+  }
+
+  .sheet .date-line{
+    text-align: right;
+    font-weight: 700;
+    font-style: italic;
+    margin: 0 0 22pt;
+  }
+
+  .sheet .blank-line{ margin: 0; }
+  .sheet p{ margin: 0 0 12pt; }
+
+  .sheet .ao-block p{ margin: 0; }
+  .sheet .ao-block{ margin-bottom: 16pt; }
+
+  .sheet .ref-line{ margin-bottom: 16pt; }
+  .sheet .ref-line b{ font-weight: 700; }
+  .sheet .ref-line u{ text-decoration: underline; }
+
+  .sheet .body-text{
+    text-align: justify;
+    margin-bottom: 12pt;
+  }
+
+  .sheet .bank-line{
+    margin: 4pt 0 16pt;
+  }
+
+  .sheet .sign-gap{ flex: 1 1 auto; min-height: 34pt; }
+
+  .sheet .sign-rule{
+    margin: 0;
+    border-bottom: 1px solid #111;
+    width: 260pt;
+  }
+  .sheet .sign-block p{
+    font-weight: 700;
+    margin: 2pt 0 0;
+  }
+
+  .sheet .footer-bar{
+    margin-top: 22pt;
+    background: #004563;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12pt;
+    padding: 9pt 14pt;
+    border-radius: 3pt 3pt 0 0;
+  }
+  .sheet .footer-bar .globe{
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  .sheet .footer-bar .globe svg{ width: 20pt; height: 20pt; display: block; }
+  .sheet .footer-bar .site{
+    font-size: 8pt;
+    color: #fff;
+    flex: 0 0 auto;
+    width: 62pt;
+    border-left: 1px solid rgba(255,255,255,.5);
+    padding-left: 10pt;
+  }
+  .sheet .footer-bar .central{
+    font-size: 7.3pt;
+    line-height: 1.5;
+    color: #fff;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 6pt;
+    border-left: 1px solid rgba(255,255,255,.5);
+    padding-left: 10pt;
+  }
+  .sheet .footer-bar .central svg{ width: 12pt; height: 12pt; flex: 0 0 auto; margin-top: 2pt; }
+  .sheet .footer-bar .central b{ font-weight: 700; }
+  .sheet .footer-bar .hours{
+    font-size: 7.3pt;
+    line-height: 1.5;
+    text-align: right;
+    color: #fff;
+    flex: 0 0 auto;
+    width: 120pt;
+  }
+  .sheet .footer-bar2{
+    display:flex;
+    justify-content: space-between;
+    font-size: 7.3pt;
+    color: #fff;
+    background: #004563;
+    padding: 6pt 14pt;
+    border-radius: 0 0 3pt 3pt;
+    border-top: 1px solid rgba(255,255,255,.5);
+  }
+  .sheet .footer-bar2 b{ font-weight: 700; }
+  .sheet .doc-code{
+    font-size: 8pt;
+    color: #444;
+    margin-top: 6pt;
+  }
+
+  .ph{ color: var(--field-empty); font-style: italic; }
+
+  /* ---------- Document tabs ---------- */
+  .doc-tabs{
+    display:flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .doc-tab{
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.4);
+    color: #fff;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .doc-tab:hover{ background: rgba(255,255,255,.22); }
+  .doc-tab.active{
+    background: #fff;
+    color: #A0522D;
+    border-color: #fff;
+  }
+
+  .hidden{ display: none !important; }
+
+  /* ---------- Sheet 2: Termo de Compromisso (CarBank) ---------- */
+  .sheet[data-doc="compromisso"]{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .sheet .cb-logo{
+    display:flex;
+    align-items:center;
+    gap: 8pt;
+    margin-bottom: 26pt;
+  }
+  .sheet .cb-logo .cb-icon{ width: 30pt; height: 30pt; flex: 0 0 auto; }
+  .sheet .cb-logo .cb-text{ font-size: 15pt; line-height: 1.05; font-weight: 800; }
+  .sheet .cb-logo .cb-text .cb-car{ color: #1E3A5F; display:block; }
+  .sheet .cb-logo .cb-text .cb-bank{ color: #2E9E8F; display:block; }
+
+  .sheet .doc-title{
+    text-align:center;
+    font-weight: 700;
+    font-size: 11pt;
+    letter-spacing: .01em;
+    margin: 0 0 4pt;
+  }
+  .sheet .doc-subtitle{
+    font-weight: 700;
+    font-style: italic;
+    font-size: 10.2pt;
+    margin: 18pt 0 14pt;
+  }
+  .sheet ol.compromisso-list{
+    margin: 0 0 18pt;
+    padding-left: 20pt;
+  }
+  .sheet ol.compromisso-list li{
+    text-align: justify;
+    margin-bottom: 14pt;
+  }
+  .sheet .compromisso-date-line{
+    margin: 10pt 0 42pt;
+  }
+  .sheet .sign-block-simple p{ margin: 2pt 0 0; font-size: 9.6pt; }
+
+  /* ---------- Print ---------- */
+  @media print{
+    body{ margin: 0; background: #fff; }
+    header.top{ display: none; }
+    main{ display: block; padding: 0; margin: 0; max-width: none; }
+    .panel{ display: none; }
+    .preview-toolbar{ display: none !important; }
+    .sheet-wrap{ overflow: visible; padding: 0; }
+    .sheet{
+      margin: 0;
+      box-shadow: none;
+      border: none;
+      zoom: 1 !important;
+    }
+    @page{ size: letter; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Documento &middot; Banco Volkswagen</div>
+    <h1>Dados Bancários</h1>
+    <p>Preencha os dados abaixo para gerar a carta de solicitação de cadastro de dados bancários, pronta para impressão em PDF.</p>
+    <div class="steps">
+      <div class="step"><span class="num">1</span> Escolha o documento</div>
+      <div class="step"><span class="num">2</span> Preencha os campos</div>
+      <div class="step"><span class="num">3</span> Clique em Imprimir / Salvar PDF</div>
+    </div>
+    <div class="doc-tabs">
+      <button type="button" class="doc-tab active" data-doc="bancaria">📄 Carta &ndash; Dados Bancários</button>
+      <button type="button" class="doc-tab" data-doc="compromisso">📝 Termo de Compromisso</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Dados para preenchimento</h2>
+    <p class="sub">Os campos entre colchetes no documento são atualizados automaticamente conforme você digita.</p>
+
+    <form id="form-dados" autocomplete="off">
+      <fieldset>
+        <legend>Dados da empresa (assinatura)</legend>
+
+        <div class="paste-box">
+          <div class="paste-label">Colar Comprovante de CNPJ (Receita Federal)</div>
+          <small>Copie o texto do comprovante de inscrição da Receita Federal e cole abaixo. Depois clique em "Puxar dados".</small>
+          <textarea id="colar_cnpj" placeholder="Cole aqui o texto do Comprovante de Inscrição e de Situação Cadastral..."></textarea>
+          <button type="button" class="pull" id="btn-puxar" style="margin-top:10px;">🔎 Puxar dados automaticamente</button>
+          <div class="pull-status" id="pull-status"></div>
+        </div>
+
+        <div class="field">
+          <label for="razao_social">Razão social</label>
+          <input type="text" id="razao_social" data-target="razao_social">
+        </div>
+
+        <div class="field">
+          <label for="cnpj">CNPJ</label>
+          <input type="text" id="cnpj" data-target="cnpj">
+        </div>
+
+        <div class="field">
+          <label for="endereco">Endereço (rua e número)</label>
+          <input type="text" id="endereco" data-target="endereco">
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="cep">CEP</label>
+            <input type="text" id="cep" data-target="cep">
+          </div>
+          <div class="field">
+            <label for="estado">Estado (UF)</label>
+            <input type="text" id="estado" data-target="estado">
+          </div>
+        </div>
+      </fieldset>
+
+      <div id="fields-bancaria">
+        <fieldset>
+          <legend>Dados bancários</legend>
+
+          <div class="row2">
+            <div class="field">
+              <label for="banco_numero">Nº do banco</label>
+              <input type="text" id="banco_numero" data-target="banco_numero">
+            </div>
+            <div class="field">
+              <label for="banco_nome">Nome do banco</label>
+              <input type="text" id="banco_nome" data-target="banco_nome">
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="agencia">Nº da agência</label>
+              <input type="text" id="agencia" data-target="agencia">
+            </div>
+            <div class="field">
+              <label for="conta">Nº da conta corrente</label>
+              <input type="text" id="conta" data-target="conta">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Data e local</legend>
+
+          <div class="row2">
+            <div class="field">
+              <label for="cidade">Cidade</label>
+              <input type="text" id="cidade" data-target="cidade">
+            </div>
+            <div class="field">
+              <label for="data_extenso">Data (por extenso)</label>
+              <input type="text" id="data_extenso" data-target="data_extenso">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div id="fields-compromisso" class="hidden">
+        <fieldset>
+          <legend>Termo de Compromisso &ndash; local e data</legend>
+          <p class="sub" style="margin-top:-6px;">A Razão social e o CNPJ acima são reaproveitados automaticamente. A cidade também é a mesma informada em "Dados da empresa" &mdash; se for diferente, ajuste o campo abaixo.</p>
+
+          <div class="row2">
+            <div class="field">
+              <label for="cidade_compromisso">Cidade (assinatura do Termo)</label>
+              <input type="text" id="cidade_compromisso" data-target="cidade_compromisso">
+            </div>
+            <div class="field">
+              <label for="data_compromisso">Data (por extenso)</label>
+              <input type="text" id="data_compromisso" data-target="data_compromisso">
+              <small>Ex.: 25 de julho de 2026</small>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="primary" id="btn-imprimir">🖨️ Imprimir / Salvar PDF</button>
+        <button type="button" class="secondary" id="btn-limpar">Limpar campos</button>
+      </div>
+      <div class="status-line" id="status-line">Os dados ficam salvos apenas neste navegador.</div>
+    </form>
+
+    <div class="preview-toolbar">
+      <button type="button" id="btn-toggle-preview">Ocultar pré-visualização</button>
+      <div class="zoom-controls" id="zoom-controls">
+        <span>Tamanho:</span>
+        <button type="button" class="zoom-btn" data-zoom="1">100%</button>
+        <button type="button" class="zoom-btn" data-zoom="0.75">75%</button>
+        <button type="button" class="zoom-btn" data-zoom="0.5">50%</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet-wrap">
+    <div class="sheet" id="sheet" data-doc="bancaria">
+      <p class="internal-tag">INTERNAL</p>
+
+      <p class="date-line">[<span class="out" data-field="cidade" data-ph="CIDADE">CIDADE</span>, <span class="out" data-field="data_extenso" data-ph="DATA POR EXTENSO">DATA POR EXTENSO</span>]</p>
+
+      <div class="ao-block">
+        <p>Ao</p>
+        <p>&nbsp;</p>
+        <p>Banco Volkswagen S.A.</p>
+        <p>Volkswagen Participações Ltda.</p>
+        <p>Consórcio Nacional Volkswagen &ndash; Administradora de Consórcio Ltda.</p>
+        <p>Volkswagen Corretora de Seguros Ltda.</p>
+      </div>
+
+      <p class="blank-line">&nbsp;</p>
+      <p class="blank-line">&nbsp;</p>
+      <p class="ref-line"><b>Ref.:</b> <u>Solicitação para cadastro de dados bancários.</u></p>
+
+      <p class="blank-line">&nbsp;</p>
+      <p class="blank-line">&nbsp;</p>
+      <p class="body-text">
+        Pelo presente, vimos solicitar que todos e quaisquer pagamentos de que sejamos beneficiários em decorrência do nosso relacionamento comercial, sejam creditados conforme abaixo:
+      </p>
+
+      <p class="blank-line">&nbsp;</p>
+      <p class="bank-line">
+        Banco <span class="out" data-field="banco_numero" data-ph="[nº do banco]">[nº do banco]</span> -
+        <span class="out" data-field="banco_nome" data-ph="[Nome do banco]">[Nome do banco]</span> -
+        Agência nº <span class="out" data-field="agencia" data-ph="[nº da agência]">[nº da agência]</span> -
+        Conta Corrente nº <span class="out" data-field="conta" data-ph="[nº da conta corrente]">[nº da conta corrente]</span>
+      </p>
+
+      <p class="blank-line">&nbsp;</p>
+      <p class="blank-line">&nbsp;</p>
+      <p>Qualquer alteração desta instrução lhes será comunicada por escrito.</p>
+
+      <p class="blank-line">&nbsp;</p>
+      <p class="blank-line">&nbsp;</p>
+      <p>Atenciosamente,</p>
+
+      <div class="sign-gap"></div>
+
+      <div class="sign-block">
+        <p class="sign-rule">&nbsp;</p>
+        <p><span class="out" data-field="razao_social" data-ph="[Razão Social]">[Razão Social]</span></p>
+        <p><span class="out" data-field="cnpj" data-ph="[00.000.000/0000-00]">[00.000.000/0000-00]</span></p>
+        <p><span class="out" data-field="endereco" data-ph="[Nome da rua, nº da casa]">[Nome da rua, nº da casa]</span> - CEP <span class="out" data-field="cep" data-ph="[00000-000]">[00000-000]</span> - <span class="out" data-field="cidade" data-ph="[Cidade]">[Cidade]</span>/<span class="out" data-field="estado" data-ph="[Estado]">[Estado]</span></p>
+      </div>
+
+      <div class="footer-bar">
+        <div class="globe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9.5"/>
+            <line x1="2.5" y1="12" x2="21.5" y2="12"/>
+            <path d="M12 2.5c3.2 3 3.2 16 0 19M12 2.5c-3.2 3-3.2 16 0 19"/>
+          </svg>
+        </div>
+        <div class="site">www.vwfs.com.br</div>
+        <div class="central">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4.5h3.5l1.7 4.2-2 2c1.1 2.7 2.9 4.5 5.6 5.6l2-2 4.2 1.7V19.5c0 1.1-.9 2-2 2C9.3 21.5 2.5 14.7 2.5 7c0-1.1.9-2 2-2z"/>
+          </svg>
+          <span>
+            <b>Central de Relacionamento Clientes:</b><br>
+            Capitais e Regiões Metropolitanas: <b>4003 6636</b><br>
+            Demais Regiões: <b>0800 770 1936</b><br>
+            Central de Atendimento Portadores Deficiência Auditiva/Fala: <b>0800 770 1935</b><br>
+            Serviço de Apoio ao Consumidor: <b>0800 770 1926</b>
+          </span>
+        </div>
+        <div class="hours">
+          Segunda a sexta: 8h às 20h<br>
+          Sábado: 8h às 14h
+        </div>
+      </div>
+      <div class="footer-bar2">
+        <span>Ouvidoria: <b>0800 701 2834</b></span>
+        <span>Segunda a sexta: 8h às 17h</span>
+      </div>
+
+      <p class="doc-code">BAVW_894 &ndash; 05/19</p>
+    </div>
+
+    <div class="sheet hidden" id="sheet-compromisso" data-doc="compromisso">
+      <p class="internal-tag">INTERNAL</p>
+
+      <div class="cb-logo">
+        <svg class="cb-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="#2E9E8F" stroke-width="2.4"/>
+          <path d="M20 10c-4 0-6.5 2.6-6.5 6 0 2.6 1.6 4.2 3.4 4.9-2 .7-4.4 2.6-4.4 6 0 .6.5 1.1 1.1 1.1h13c.6 0 1.1-.5 1.1-1.1 0-3.4-2.4-5.3-4.4-6 1.8-.7 3.4-2.3 3.4-4.9 0-3.4-2.5-6-6.7-6z" fill="#1E3A5F"/>
+        </svg>
+        <div class="cb-text">
+          <span class="cb-car">Car</span>
+          <span class="cb-bank">Bank</span>
+        </div>
+      </div>
+
+      <p class="doc-title">TERMO DE COMPROMISSO &ndash; CARBANK</p>
+      <p class="doc-subtitle">Regularização do Registro do Veículo - Venda de Usados</p>
+
+      <p class="body-text">
+        Com o objetivo de agilizar o processo de pagamento do(s) contrato(s) de veículos usados; o Concessionário/Lojista,
+        <span class="out" data-field="razao_social" data-ph="[Razão Social]">[Razão Social]</span>, CNPJ
+        <span class="out" data-field="cnpj" data-ph="[00.000.000/0000-00]">[00.000.000/0000-00]</span>,
+        declara ter ciência e comprometimento das definições estabelecidas neste Termo com relação às informações
+        apresentadas e tratativas que deverão ser realizadas, conforme a seguir exposto: Considerando a impossibilidade
+        de inclusão do gravame antes do pagamento do(s) contrato(s) por qualquer inconsistência informada pelo Detran,
+        o Banco Volkswagen efetuou o pagamento da(s) operação(ões) realizadas pelo Concessionário/Lojista, que está
+        ciente e de acordo com as seguintes obrigações a serem cumpridas:
+      </p>
+
+      <ol class="compromisso-list">
+        <li>O concessionário/Lojista se compromete, no prazo de 45 (quarenta e cinco) dias da data do pagamento de cada contrato firmado, a sanar toda e qualquer pendência e/ou impedimento existente envolvendo o bem a ser dado em garantia e informar, imediatamente o Banco Volkswagen, para que este efetue a alienação da garantia junto ao Detran.</li>
+        <li>Caso o gravame não seja incluso até o prazo mencionado acima, o Concessionário/Lojista arcará com todo e qualquer prejuízo decorrente do inadimplemento do(s) contrato(s), incluindo, mas não se limitando, aos prejuízos gerados pela ausência de constituição de gravame nos casos de inadimplemento do cliente.</li>
+        <li>O Concessionário/Lojista está ciente que, a partir da data de entrada do veículo na Concessionária/Loja, esta se torna responsável por quaisquer danos, multa, infração ou prejuízos causados ao veículo.</li>
+        <li>O concessionário/Lojista ficará responsável caso ocorra qualquer situação que possa gerar ação judicial do cliente que está financiando com o Banco em decorrência deste período sem a alienação da garantia.</li>
+      </ol>
+
+      <p class="compromisso-date-line">
+        <span class="out" data-field="cidade_compromisso" data-ph="[cidade]">[cidade]</span>, <span class="out" data-field="data_compromisso" data-ph="[data por extenso]">[data por extenso]</span>
+      </p>
+
+      <div class="sign-block-simple">
+        <p class="sign-rule">&nbsp;</p>
+        <p>Assinatura do Concessionário/Lojista</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var FIELDS = ["cidade","data_extenso","razao_social","cnpj","endereco","cep","estado","banco_numero","banco_nome","agencia","conta","cidade_compromisso","data_compromisso"];
+  var STORAGE_KEY = "carta-dados-bancarios-vw-v1";
+
+  var MESES = ["JANEIRO","FEVEREIRO","MARÇO","ABRIL","MAIO","JUNHO","JULHO","AGOSTO","SETEMBRO","OUTUBRO","NOVEMBRO","DEZEMBRO"];
+  var MESES_MIN = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+
+  function dataDeHoje(){
+    var d = new Date();
+    return d.getDate() + " DE " + MESES[d.getMonth()] + " DE " + d.getFullYear();
+  }
+
+  function dataDeHojeCompromisso(){
+    var d = new Date();
+    return d.getDate() + " de " + MESES_MIN[d.getMonth()] + " de " + d.getFullYear();
+  }
+
+  function loadSaved(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+
+  function save(data){
+    var toSave = {};
+    for(var k in data){ if(k !== "data_extenso" && k !== "data_compromisso"){ toSave[k] = data[k]; } }
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave)); }catch(e){}
+  }
+
+  function currentData(){
+    var data = {};
+    FIELDS.forEach(function(f){
+      data[f] = document.getElementById(f).value;
+    });
+    return data;
+  }
+
+  function render(){
+    var data = currentData();
+    FIELDS.forEach(function(f){
+      var input = document.getElementById(f);
+      var outs = document.querySelectorAll('.out[data-field="' + f + '"]');
+      var val = data[f] ? data[f].trim() : "";
+      outs.forEach(function(out){
+        if(val){
+          out.textContent = val;
+          out.classList.remove("ph");
+        } else {
+          out.textContent = out.getAttribute("data-ph");
+          out.classList.add("ph");
+        }
+      });
+      if(val){ input.classList.add("filled"); } else { input.classList.remove("filled"); }
+    });
+    save(data);
+    updateStatus(data);
+  }
+
+  function updateStatus(data){
+    var filled = FIELDS.filter(function(f){ return data[f] && data[f].trim(); }).length;
+    var line = document.getElementById("status-line");
+    if(filled === 0){
+      line.innerHTML = "Os dados ficam salvos apenas neste navegador.";
+    } else if(filled === FIELDS.length){
+      line.innerHTML = "<strong>Todos os campos preenchidos.</strong> Pronto para imprimir.";
+    } else {
+      line.innerHTML = filled + " de " + FIELDS.length + " campos preenchidos.";
+    }
+  }
+
+  function normalizeLabel(s){
+    return s
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .toUpperCase()
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function parseCnpjCard(text){
+    var rawLines = text.split(/\r?\n/).map(function(l){ return l.trim(); }).filter(function(l){ return l.length; });
+
+    var LABELS = {
+      "NUMERO DE INSCRICAO": "cnpj",
+      "NOME EMPRESARIAL": "razao_social",
+      "LOGRADOURO": "logradouro",
+      "NUMERO": "numero",
+      "COMPLEMENTO": "complemento",
+      "CEP": "cep",
+      "BAIRRO/DISTRITO": "bairro",
+      "MUNICIPIO": "cidade",
+      "UF": "estado"
+    };
+
+    var found = {};
+    for(var i = 0; i < rawLines.length; i++){
+      var label = normalizeLabel(rawLines[i]);
+      if(LABELS.hasOwnProperty(label) && rawLines[i+1]){
+        var key = LABELS[label];
+        // don't overwrite if already captured (keeps first occurrence)
+        if(!found[key]){
+          found[key] = rawLines[i+1];
+        }
+      }
+    }
+
+    // Fallback: find CNPJ pattern anywhere in the text if label match failed
+    if(!found.cnpj){
+      var m = text.match(/\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}/);
+      if(m) found.cnpj = m[0];
+    }
+
+    return found;
+  }
+
+  function aplicarDadosPuxados(found){
+    var statusEl = document.getElementById("pull-status");
+    var aplicados = [];
+
+    if(found.cnpj){ document.getElementById("cnpj").value = found.cnpj; aplicados.push("CNPJ"); }
+    if(found.razao_social){ document.getElementById("razao_social").value = found.razao_social; aplicados.push("Razão social"); }
+
+    if(found.logradouro){
+      var endereco = found.logradouro;
+      if(found.numero && found.numero !== "S/N"){ endereco += ", " + found.numero; }
+      document.getElementById("endereco").value = endereco;
+      aplicados.push("Endereço");
+    }
+
+    if(found.cep){ document.getElementById("cep").value = found.cep; aplicados.push("CEP"); }
+    if(found.cidade){ document.getElementById("cidade").value = found.cidade; aplicados.push("Cidade"); }
+    if(found.estado){ document.getElementById("estado").value = found.estado; aplicados.push("Estado"); }
+
+    if(aplicados.length){
+      statusEl.textContent = "Preenchido automaticamente: " + aplicados.join(", ") + ".";
+      statusEl.className = "pull-status ok";
+    } else {
+      statusEl.textContent = "Não consegui identificar os dados nesse texto. Confira se colou o comprovante completo.";
+      statusEl.className = "pull-status warn";
+    }
+  }
+
+  var TITULO_PADRAO = document.title;
+
+  function init(){
+    var saved = loadSaved();
+    FIELDS.forEach(function(f){
+      var input = document.getElementById(f);
+      if(f === "data_extenso" || f === "data_compromisso"){ return; }
+      if(saved[f] !== undefined && saved[f] !== ""){
+        input.value = saved[f];
+      }
+      input.addEventListener("input", render);
+    });
+    document.getElementById("data_extenso").addEventListener("input", render);
+    document.getElementById("data_compromisso").addEventListener("input", render);
+
+    document.getElementById("data_extenso").value = dataDeHoje();
+    document.getElementById("data_compromisso").value = dataDeHojeCompromisso();
+
+    render();
+
+    document.getElementById("btn-puxar").addEventListener("click", function(){
+      var texto = document.getElementById("colar_cnpj").value;
+      if(!texto.trim()){
+        var statusEl = document.getElementById("pull-status");
+        statusEl.textContent = "Cole o texto do comprovante antes de puxar os dados.";
+        statusEl.className = "pull-status warn";
+        return;
+      }
+      var found = parseCnpjCard(texto);
+      aplicarDadosPuxados(found);
+      render();
+    });
+
+    document.getElementById("btn-limpar").addEventListener("click", function(){
+      if(!confirm("Limpar todos os campos preenchidos?")) return;
+      FIELDS.forEach(function(f){ document.getElementById(f).value = ""; });
+      document.getElementById("data_extenso").value = dataDeHoje();
+      document.getElementById("data_compromisso").value = dataDeHojeCompromisso();
+      document.getElementById("colar_cnpj").value = "";
+      document.getElementById("pull-status").textContent = "";
+      document.getElementById("pull-status").className = "pull-status";
+      render();
+    });
+
+    function nomeArquivo(){
+      var loja = (document.getElementById("razao_social").value || "")
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        .toUpperCase()
+        .replace(/[^A-Z0-9\s]/g, "")
+        .trim();
+
+      var sufixos = ["LTDA", "EIRELI", "EPP", "MEI", "ME", "SA"];
+      var mudou = true;
+      while(mudou){
+        mudou = false;
+        for(var i = 0; i < sufixos.length; i++){
+          var re = new RegExp("\\s+" + sufixos[i] + "$");
+          if(re.test(loja)){ loja = loja.replace(re, ""); mudou = true; }
+        }
+      }
+      loja = loja.replace(/\s+/g, "_");
+
+      var cnpjDigits = (document.getElementById("cnpj").value || "").replace(/\D/g, "");
+      var prefixo = activeDoc === "compromisso" ? "TERMO_COMPROMISSO" : "CARTA_DADOS_BANCARIOS";
+      var partes = [prefixo, loja, cnpjDigits].filter(Boolean);
+      return partes.length ? partes.join("_") : TITULO_PADRAO;
+    }
+
+    document.getElementById("btn-imprimir").addEventListener("click", function(){
+      document.title = nomeArquivo();
+      sheetEl.style.zoom = 1;
+      sheetCompromissoEl.style.zoom = 1;
+      sheetWrapEl.style.display = "";
+      window.print();
+    });
+
+    window.addEventListener("afterprint", function(){
+      document.title = TITULO_PADRAO;
+      var z = null;
+      try{ z = parseFloat(localStorage.getItem("preview-zoom")); }catch(e){}
+      sheetEl.style.zoom = z && !isNaN(z) ? z : 1;
+      sheetCompromissoEl.style.zoom = z && !isNaN(z) ? z : 1;
+      var visible = null;
+      try{ visible = localStorage.getItem("preview-visible"); }catch(e){}
+      if(visible === "0"){ sheetWrapEl.style.display = "none"; }
+    });
+
+    // ---- Ocultar / mostrar pré-visualização ----
+    var mainEl = document.querySelector("main");
+    var sheetWrapEl = document.querySelector(".sheet-wrap");
+    var sheetEl = document.getElementById("sheet");
+    var sheetCompromissoEl = document.getElementById("sheet-compromisso");
+    var zoomControls = document.getElementById("zoom-controls");
+    var toggleBtn = document.getElementById("btn-toggle-preview");
+
+    // ---- Alternar entre documentos (abas) ----
+    var activeDoc = "bancaria";
+    var DOC_TAB_KEY = "carta-dados-bancarios-vw-doc-ativo";
+
+    function setActiveDoc(doc){
+      activeDoc = doc;
+      document.querySelectorAll(".doc-tab").forEach(function(btn){
+        btn.classList.toggle("active", btn.getAttribute("data-doc") === doc);
+      });
+      if(doc === "compromisso"){
+        document.getElementById("fields-bancaria").classList.add("hidden");
+        document.getElementById("fields-compromisso").classList.remove("hidden");
+        sheetEl.classList.add("hidden");
+        sheetCompromissoEl.classList.remove("hidden");
+        var cidadeCompEl = document.getElementById("cidade_compromisso");
+        var cidadeBaseEl = document.getElementById("cidade");
+        if(!cidadeCompEl.value && cidadeBaseEl.value){
+          cidadeCompEl.value = cidadeBaseEl.value;
+          render();
+        }
+      } else {
+        document.getElementById("fields-compromisso").classList.add("hidden");
+        document.getElementById("fields-bancaria").classList.remove("hidden");
+        sheetCompromissoEl.classList.add("hidden");
+        sheetEl.classList.remove("hidden");
+      }
+      try{ localStorage.setItem(DOC_TAB_KEY, doc); }catch(e){}
+    }
+
+    document.querySelectorAll(".doc-tab").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        setActiveDoc(btn.getAttribute("data-doc"));
+      });
+    });
+
+    var savedDoc = null;
+    try{ savedDoc = localStorage.getItem(DOC_TAB_KEY); }catch(e){}
+    setActiveDoc(savedDoc === "compromisso" ? "compromisso" : "bancaria");
+
+    function setPreviewVisible(visible){
+      if(visible){
+        sheetWrapEl.style.display = "";
+        zoomControls.style.display = "";
+        mainEl.classList.remove("preview-hidden");
+        toggleBtn.textContent = "Ocultar pré-visualização";
+      } else {
+        sheetWrapEl.style.display = "none";
+        zoomControls.style.display = "none";
+        mainEl.classList.add("preview-hidden");
+        toggleBtn.textContent = "Mostrar pré-visualização";
+      }
+      try{ localStorage.setItem("preview-visible", visible ? "1" : "0"); }catch(e){}
+    }
+
+    toggleBtn.addEventListener("click", function(){
+      var isHidden = sheetWrapEl.style.display === "none";
+      setPreviewVisible(isHidden);
+    });
+
+    var savedVisible = null;
+    try{ savedVisible = localStorage.getItem("preview-visible"); }catch(e){}
+    if(savedVisible === "0"){ setPreviewVisible(false); }
+
+    // ---- Zoom da pré-visualização ----
+    function setZoom(z){
+      sheetEl.style.zoom = z;
+      sheetCompromissoEl.style.zoom = z;
+      document.querySelectorAll(".zoom-btn").forEach(function(btn){
+        btn.classList.toggle("active", parseFloat(btn.getAttribute("data-zoom")) === z);
+      });
+      try{ localStorage.setItem("preview-zoom", z); }catch(e){}
+    }
+
+    document.querySelectorAll(".zoom-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        setZoom(parseFloat(btn.getAttribute("data-zoom")));
+      });
+    });
+
+    var savedZoom = null;
+    try{ savedZoom = parseFloat(localStorage.getItem("preview-zoom")); }catch(e){}
+    setZoom(savedZoom && !isNaN(savedZoom) ? savedZoom : 0.75);
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
+</script>
+
+</body>
+</html>
