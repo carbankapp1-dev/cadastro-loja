@@ -962,7 +962,12 @@
     }
 
     if(found.cep){ document.getElementById("cep").value = found.cep; aplicados.push("CEP"); }
-    if(found.cidade){ document.getElementById("cidade").value = found.cidade; aplicados.push("Cidade"); }
+    if(found.cidade){
+      document.getElementById("cidade").value = found.cidade;
+      var cidadeCompEl = document.getElementById("cidade_compromisso");
+      if(!cidadeCompEl.value){ cidadeCompEl.value = found.cidade; }
+      aplicados.push("Cidade");
+    }
     if(found.estado){ document.getElementById("estado").value = found.estado; aplicados.push("Estado"); }
 
     if(aplicados.length){
