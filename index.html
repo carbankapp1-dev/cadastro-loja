@@ -1011,26 +1011,16 @@
     });
 
     function nomeArquivo(){
-      var loja = (document.getElementById("razao_social").value || "")
+      var razaoRaw = (document.getElementById("razao_social").value || "").trim();
+      var primeiraPalavra = (razaoRaw.split(/\s+/)[0] || "")
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        .toUpperCase()
-        .replace(/[^A-Z0-9\s]/g, "")
-        .trim();
-
-      var sufixos = ["LTDA", "EIRELI", "EPP", "MEI", "ME", "SA"];
-      var mudou = true;
-      while(mudou){
-        mudou = false;
-        for(var i = 0; i < sufixos.length; i++){
-          var re = new RegExp("\\s+" + sufixos[i] + "$");
-          if(re.test(loja)){ loja = loja.replace(re, ""); mudou = true; }
-        }
-      }
-      loja = loja.replace(/\s+/g, "_");
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "");
 
       var cnpjDigits = (document.getElementById("cnpj").value || "").replace(/\D/g, "");
-      var prefixo = activeDoc === "compromisso" ? "TERMO_COMPROMISSO" : "CARTA_DADOS_BANCARIOS";
-      var partes = [prefixo, loja, cnpjDigits].filter(Boolean);
+      var tipoDoc = activeDoc === "compromisso" ? "compromisso" : "dados_bancarios";
+
+      var partes = [tipoDoc, primeiraPalavra, cnpjDigits].filter(Boolean);
       return partes.length ? partes.join("_") : TITULO_PADRAO;
     }
 
