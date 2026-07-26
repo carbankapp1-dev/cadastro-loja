@@ -78,16 +78,16 @@
     align-items:center;
     gap: 8px;
     font-size: 13px;
-    color: #fff;
+    color: #142A45;
   }
   .steps .num{
     width: 20px; height: 20px;
     border-radius: 50%;
-    background: rgba(255,255,255,.18);
-    border: 1px solid rgba(255,255,255,.45);
+    background: rgba(20,42,69,.14);
+    border: 1px solid rgba(20,42,69,.35);
     display:flex; align-items:center; justify-content:center;
     font-size: 11px; font-weight: 700;
-    color: #fff;
+    color: #142A45;
   }
 
   main{
@@ -285,13 +285,6 @@
     text-align: center;
   }
   .status-line strong{ color: var(--ok); }
-  .pdf-gerando{
-    font-size: 12.5px;
-    color: var(--teal);
-    font-weight: 700;
-    text-align: center;
-    margin-top: 8px;
-  }
 
   /* ---------- Document preview ---------- */
   .sheet-wrap{
@@ -568,7 +561,7 @@
     <div class="steps">
       <div class="step"><span class="num">1</span> Escolha o documento</div>
       <div class="step"><span class="num">2</span> Preencha os campos</div>
-      <div class="step"><span class="num">3</span> Clique em Imprimir / Salvar PDF</div>
+      <div class="step"><span class="num">3</span> Clique em Salvar PDF</div>
     </div>
     <div class="doc-tabs">
       <button type="button" class="doc-tab active" data-doc="bancaria">📄 Carta &ndash; Dados Bancários</button>
@@ -684,11 +677,9 @@
       </div>
 
       <div class="actions">
-        <button type="button" class="primary" id="btn-salvar-pdf">💾 Salvar em PDF</button>
-        <button type="button" class="secondary" id="btn-imprimir">🖨️ Imprimir</button>
+        <button type="button" class="primary" id="btn-imprimir">🖨️ Salvar PDF</button>
         <button type="button" class="secondary" id="btn-limpar">Limpar campos</button>
       </div>
-      <div class="pdf-gerando" id="pdf-gerando" style="display:none;">Gerando PDF&hellip;</div>
       <div class="status-line" id="status-line">Os dados ficam salvos apenas neste navegador.</div>
     </form>
 
@@ -827,7 +818,6 @@
   </section>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
 (function(){
   var FIELDS = ["cidade","data_extenso","razao_social","cnpj","endereco","cep","estado","banco_numero","banco_nome","agencia","conta","cidade_compromisso","data_compromisso"];
@@ -1050,68 +1040,6 @@
       sheetCompromissoEl.style.zoom = 1;
       sheetWrapEl.style.display = "";
       window.print();
-    });
-
-    document.getElementById("btn-salvar-pdf").addEventListener("click", function(){
-      var original = activeDoc === "compromisso" ? sheetCompromissoEl : sheetEl;
-      var statusEl = document.getElementById("pdf-gerando");
-      statusEl.style.display = "block";
-
-      if(typeof html2pdf === "undefined"){
-        statusEl.style.display = "none";
-        alert("Não foi possível carregar o gerador de PDF (verifique sua conexão com a internet). Use o botão Imprimir e escolha 'Salvar como PDF'.");
-        return;
-      }
-
-      // Clona a folha sem zoom de pré-visualização, fora da área visível.
-      // Isso evita o bug de espaço em branco/página cortada causado pelo
-      // zoom da pré-visualização e pela posição de rolagem da página.
-      var clone = original.cloneNode(true);
-      clone.removeAttribute("id");
-      clone.classList.remove("hidden");
-      clone.style.zoom = "1";
-      clone.style.boxShadow = "none";
-      clone.style.border = "none";
-      clone.style.margin = "0";
-      clone.style.position = "fixed";
-      clone.style.top = "0";
-      clone.style.left = "0";
-      clone.style.zIndex = "-9999";
-      document.body.appendChild(clone);
-
-      function limpar(){
-        if(clone.parentNode){ document.body.removeChild(clone); }
-        statusEl.style.display = "none";
-      }
-
-      var opt = {
-        margin: 0,
-        filename: nomeArquivo() + ".pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: "#ffffff",
-          scrollX: 0,
-          scrollY: 0,
-          windowWidth: clone.scrollWidth,
-          windowHeight: clone.scrollHeight
-        },
-        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-        pagebreak: { mode: ["avoid-all"] }
-      };
-
-      // Espera dois quadros de renderização para garantir que o clone já
-      // esteja totalmente desenhado (com o tamanho real) antes de capturar.
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          html2pdf().set(opt).from(clone).save().then(limpar).catch(function(err){
-            limpar();
-            console.error(err);
-            alert("Não foi possível gerar o PDF automaticamente. Use o botão Imprimir e escolha 'Salvar como PDF' na caixa de impressão.");
-          });
-        });
-      });
     });
 
     window.addEventListener("afterprint", function(){
