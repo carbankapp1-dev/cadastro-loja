@@ -1053,39 +1053,64 @@
     });
 
     document.getElementById("btn-salvar-pdf").addEventListener("click", function(){
-      var sheet = activeDoc === "compromisso" ? sheetCompromissoEl : sheetEl;
+      var original = activeDoc === "compromisso" ? sheetCompromissoEl : sheetEl;
       var statusEl = document.getElementById("pdf-gerando");
-      var prevZoom = sheet.style.zoom;
-      var wasHidden = sheetWrapEl.style.display === "none";
-      sheetWrapEl.style.display = "";
-      sheet.style.zoom = 1;
       statusEl.style.display = "block";
 
-      function restaurar(){
+      if(typeof html2pdf === "undefined"){
         statusEl.style.display = "none";
-        sheet.style.zoom = prevZoom;
-        if(wasHidden){ sheetWrapEl.style.display = "none"; }
+        alert("Não foi possível carregar o gerador de PDF (verifique sua conexão com a internet). Use o botão Imprimir e escolha 'Salvar como PDF'.");
+        return;
+      }
+
+      // Clona a folha sem zoom de pré-visualização, fora da área visível.
+      // Isso evita o bug de espaço em branco/página cortada causado pelo
+      // zoom da pré-visualização e pela posição de rolagem da página.
+      var clone = original.cloneNode(true);
+      clone.removeAttribute("id");
+      clone.classList.remove("hidden");
+      clone.style.zoom = "1";
+      clone.style.boxShadow = "none";
+      clone.style.border = "none";
+      clone.style.margin = "0";
+      clone.style.position = "fixed";
+      clone.style.top = "0";
+      clone.style.left = "0";
+      clone.style.zIndex = "-9999";
+      document.body.appendChild(clone);
+
+      function limpar(){
+        if(clone.parentNode){ document.body.removeChild(clone); }
+        statusEl.style.display = "none";
       }
 
       var opt = {
         margin: 0,
         filename: nomeArquivo() + ".pdf",
         image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: clone.scrollWidth,
+          windowHeight: clone.scrollHeight
+        },
         jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
         pagebreak: { mode: ["avoid-all"] }
       };
 
-      if(typeof html2pdf === "undefined"){
-        restaurar();
-        alert("Não foi possível carregar o gerador de PDF (verifique sua conexão com a internet). Use o botão Imprimir e escolha 'Salvar como PDF'.");
-        return;
-      }
-
-      html2pdf().set(opt).from(sheet).save().then(restaurar).catch(function(err){
-        restaurar();
-        console.error(err);
-        alert("Não foi possível gerar o PDF automaticamente. Use o botão Imprimir e escolha 'Salvar como PDF' na caixa de impressão.");
+      // Espera dois quadros de renderização para garantir que o clone já
+      // esteja totalmente desenhado (com o tamanho real) antes de capturar.
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          html2pdf().set(opt).from(clone).save().then(limpar).catch(function(err){
+            limpar();
+            console.error(err);
+            alert("Não foi possível gerar o PDF automaticamente. Use o botão Imprimir e escolha 'Salvar como PDF' na caixa de impressão.");
+          });
+        });
       });
     });
 
