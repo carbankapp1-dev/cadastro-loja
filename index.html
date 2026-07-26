@@ -605,21 +605,29 @@
   .sheet .fc-check-row{
     display:flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     border-top: 1px solid #111;
     padding: 3pt 5pt 4pt;
     font-size: 7.3pt;
+    gap: 8pt;
+    flex-wrap: wrap;
+  }
+  .sheet .fc-check-row > span:first-child{
+    flex: 1 1 auto;
+    min-width: 0;
   }
   .sheet .fc-check-row .fc-check-opts{
     display:flex;
-    gap: 10pt;
-    flex: 0 0 auto;
-    white-space: nowrap;
+    gap: 8pt;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 62%;
   }
   .sheet .fc-checkbox{
     display:inline-flex;
-    align-items:center;
+    align-items:flex-start;
     gap: 3pt;
+    min-width: 0;
   }
   .sheet .fc-checkbox .box{
     width: 8pt; height: 8pt;
@@ -1185,26 +1193,26 @@
       <p class="fc-title">FICHA CADASTRAL &ndash; PESSOA JURÍDICA</p>
 
       <div class="fc-grid">
-        <div class="fc-row" style="grid-template-columns: 1fr 2fr;">
+        <div class="fc-row" style="grid-template-columns: 1fr 1.8fr;">
           <div class="fc-cell"><span class="fc-label">CNPJ</span><span class="fc-value out" data-field="cnpj" data-ph="[CNPJ]">[CNPJ]</span></div>
           <div class="fc-cell"><span class="fc-label">Razão Social</span><span class="fc-value out" data-field="razao_social" data-ph="[Razão Social]">[Razão Social]</span></div>
         </div>
-        <div class="fc-row" style="grid-template-columns: 1fr 1fr;">
+        <div class="fc-row" style="grid-template-columns: 1.05fr 1fr;">
           <div class="fc-cell"><span class="fc-label">Ramo de atividade</span><span class="fc-value out" data-field="ramo_atividade" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Atividade principal (CNAE)</span><span class="fc-value out" data-field="cnae" data-ph="&nbsp;">&nbsp;</span></div>
         </div>
-        <div class="fc-row" style="grid-template-columns: 3fr 0.6fr 1fr;">
+        <div class="fc-row" style="grid-template-columns: 8.3fr 1fr 2.4fr;">
           <div class="fc-cell"><span class="fc-label">Endereço da Sede (Rua/Av.)</span><span class="fc-value out" data-field="endereco_sede" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Nº</span><span class="fc-value out" data-field="numero_sede" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Complemento</span><span class="fc-value out" data-field="complemento_sede" data-ph="&nbsp;">&nbsp;</span></div>
         </div>
-        <div class="fc-row" style="grid-template-columns: 1.4fr 1.4fr 0.5fr 0.9fr;">
+        <div class="fc-row" style="grid-template-columns: 3.5fr 4.75fr 1fr 2.4fr;">
           <div class="fc-cell"><span class="fc-label">Bairro</span><span class="fc-value out" data-field="bairro_sede" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Cidade</span><span class="fc-value out" data-field="cidade_sede" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">UF</span><span class="fc-value out" data-field="estado_sede" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">CEP</span><span class="fc-value out" data-field="cep_sede" data-ph="&nbsp;">&nbsp;</span></div>
         </div>
-        <div class="fc-row" style="grid-template-columns: 1fr 1fr 1.3fr;">
+        <div class="fc-row" style="grid-template-columns: 1.03fr 1.38fr 1fr;">
           <div class="fc-cell"><span class="fc-label">Telefone (DDD/Nº)</span><span class="fc-value out" data-field="telefone" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">E-mail</span><span class="fc-value out" data-field="email" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell">
@@ -1215,18 +1223,18 @@
             </span>
           </div>
         </div>
-        <div class="fc-row" style="grid-template-columns: 3fr 0.6fr 1fr;">
+        <div class="fc-row" style="grid-template-columns: 8.3fr 1fr 2.4fr;">
           <div class="fc-cell"><span class="fc-label">Endereço para correspondência (Rua/Av.)</span><span class="fc-value" id="fc-out-corr-endereco">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Nº</span><span class="fc-value" id="fc-out-corr-numero">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Complemento</span><span class="fc-value" id="fc-out-corr-complemento">&nbsp;</span></div>
         </div>
-        <div class="fc-row" style="grid-template-columns: 1.4fr 1.4fr 0.5fr 0.9fr;">
+        <div class="fc-row" style="grid-template-columns: 3.55fr 3.92fr 1fr 5.45fr;">
           <div class="fc-cell"><span class="fc-label">Bairro</span><span class="fc-value" id="fc-out-corr-bairro">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Cidade</span><span class="fc-value" id="fc-out-corr-cidade">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">UF</span><span class="fc-value" id="fc-out-corr-estado">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">CEP</span><span class="fc-value" id="fc-out-corr-cep">&nbsp;</span></div>
         </div>
-        <div class="fc-row" style="grid-template-columns: 1fr 1.4fr 1.2fr;">
+        <div class="fc-row" style="grid-template-columns: 1fr 4.25fr 3.38fr;">
           <div class="fc-cell"><span class="fc-label">Data constituição</span><span class="fc-value out" data-field="data_constituicao" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Forma de constituição</span><span class="fc-value out" data-field="forma_constituicao" data-ph="&nbsp;">&nbsp;</span></div>
           <div class="fc-cell"><span class="fc-label">Faturamento médio mensal R$</span><span class="fc-value out" data-field="faturamento_medio" data-ph="&nbsp;">&nbsp;</span></div>
