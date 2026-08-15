@@ -836,13 +836,15 @@
   }
   .sheet[data-doc="wlcontrato"] .wl-page{
     width: 210mm;
-    margin: 0 auto;
+    min-height: 297mm;
+    margin: 0 auto 6mm;
     background: #fff;
     padding: 31mm 17.1mm 17.4mm 16.6mm;
     position: relative;
     box-shadow: 0 2px 10px rgba(0,0,0,.15);
     font-family: Arial, Helvetica, sans-serif;
   }
+  .sheet[data-doc="wlcontrato"] .wl-page:last-child{ margin-bottom: 0; }
   .sheet[data-doc="wlcontrato"] p{
     font-size: 10.5pt;
     line-height: 1.3;
@@ -906,13 +908,6 @@
     margin-bottom: 20pt;
     font-size: 10.5pt;
   }
-  .sheet[data-doc="wlcontrato"] .wl-break{
-    page-break-before: always;
-    margin-top: 28mm !important;
-  }
-  .sheet[data-doc="wlcontrato"] .wl-space-top{
-    margin-top: 28mm !important;
-  }
 
   @media print{
     body{ margin: 0; background: #fff; }
@@ -931,7 +926,9 @@
     .sheet[data-doc="wlcontrato"] .wl-page{
       margin: 0;
       box-shadow: none;
+      page-break-after: always;
     }
+    .sheet[data-doc="wlcontrato"] .wl-page:last-child{ page-break-after: auto; }
     @page{ size: letter; margin: 0; }
   }
 </style>
@@ -1641,10 +1638,11 @@
 <p><b>1. OBJETO.</b> Prestação dos serviços de correspondente para recepção e encaminhamento de propostas referentes aos contratos de crédito (“Operação” ou “Operações”) e, se aplicavel, prestação de serviços adicionais, nos termos do Anexo I – Condições Comerciais e Operacionais (“Anexo I”).</p>
 <p>1.1. A formalização de Operações, sejam estas contratadas em via física ou em sistema eletrônico, observarão os padrões e os critérios de qualidade designados pelo BANCO, os quais poderão constar em anexo a este Contrato.</p>
 <p><b>2. REMUNERAÇÃO.</b> Fica certo e ajustado que o CORRESPONDENTE será remunerado a uma alíquota incidente sobre o valor de sua produção em cada modalidade de Operações, conforme tabelas emitidas de tempos em tempos pelo BANCO.</p>
-
 <p>2.1. Fica o BANCO autorizado a considerar, no pagamento da remuneração do CORRESPONDENTE, o índice de liquidação antecipada, cuja metodologia utilizada para o seu cálculo deverá ser cientificada à Associação da marca a qual o CORRESPONDENTE é associado, para negociação individual com cada concessionário.</p>
 <p>2.2. Todos os tributos e encargos incidentes sobre a remuneração prevista no Contrato serão de inteira responsabilidade do CORRESPONDENTE, nada podendo ser imputado ao BANCO a esse respeito.</p>
-<p class="wl-break">2.3. Fica acertado que poderá ocorrer pagamento de remuneração a pessoa diversa do CORRESPONDENTE que intermediou a celebração do contrato de financiamento, somente quando se tratar de empresa do mesmo grupo econômico devidamente contratada como CORRESPONDENTE com o BANCO.</p>
+<p>2.3. Fica acertado que poderá ocorrer pagamento de remuneração a pessoa diversa do CORRESPONDENTE que intermediou a celebração do contrato de financiamento, somente quando se tratar de empresa do mesmo grupo econômico devidamente contratada como CORRESPONDENTE com o BANCO.</p>
+      </div>
+      <div class="wl-page">
 <p><b>3. OBRIGAÇÕES E RESPONSABILIDADES DO CORRESPONDENTE.</b> O CORRESPONDENTE, prestando este serviço por meio físico ou por meio digital, deverá:</p>
 <p>3.1. Formalizar corretamente as operações e inserir corretamente os dados do clientes conforme documentos que lhe forem exibidos, observadas todas as instruções e padrões de qualidade do CONTRATANTE.</p>
 <p>3.1.1. Em caso de constatação objetivamente comprovada pelo CONTRATANTE de Operação formalizada pelo CORRESPONDENTE sem a observância dos padrões e critérios de qualidade determinados pelo CONTRATANTE, o CORRESPONDENTE, após a garantia de prévio e amplo direito de defesa, o qual deverá ser exercida pelo CORRESPONDENTE no prazo de até 05 (cinco) dias úteis contados da comunicação do CONTRATANTE, responderá pelos valores necessários para a liquidação da respectiva Operação, por meio de pagamento de boleto representativo de tais valores a ser emitido pelo CONTRATANTE, vedado o saque de duplicatas, sem prejuízo do pagamento de eventual indenização a terceiros prejudicados. Caso o CONTRATANTE não concorde com os argumentos apresentados, o CORRESPONDENTE deverá realizar a devolução dos valores ao CONTRATANTE, nos termos do item 3.22.</p>
@@ -1654,9 +1652,10 @@
 <p>3.4.1 O CORRESPONDENTE tem conhecimento de que para a realização de serviços que exijam acesso a sistemas de informática, o início da prestação de tais serviços fica condicionado à habilitação a ser realizada pelo CONTRATANTE que, por sua vez, não se responsabiliza pelos custos de ajustes estruturais que eventualmente sejam necessários ao CORRESPONDENTE.</p>
 <p>3.5. Executar os serviços contratados conforme as especificações, padrões de qualidade, normas operacionais e, quando do atendimento aos clientes, apresentar os planos disponíveis (inclusive de outras instituições), tabelas de tarifas, taxas de juros, cálculo de Custo Efetivo Total (CET) e demais informações definidas e fornecidas pelo CONTRATANTE.</p>
 <p>3.6. Cumprir o plano de qualidade de atendimento disponibilizado pelo CONTRATANTE, que incluirá recomendações e diretrizes de normativos de autorregulação do setor bancário, bem como as orientações gerais e operacionais disponibilizadas pelo CONTRATANTE envolvendo os seguintes temas: as medidas administrativas, de segurança, sigilo bancário, normas atinentes à prevenção aos crimes de lavagem de dinheiro e normas relativas à proteção de dados pessoais.</p>
-
 <p>3.7. Manter relação formalizada mediante vínculo empregatício ou vínculo contratual de outra espécie, , este segundo desde que autorizado previamente pelo CONTRATANTE, a critério do CONTRATANTE, com as pessoas naturais integrantes da sua equipe, envolvidas na execução deste Contrato.</p>
-<p class="wl-break">3.8. Garantir que sua equipe seja certificada, nos termos da Resolução 4.935, de 29 de julho de 2021, do Conselho Monetário Nacional (CMN), por entidade de reconhecida capacidade técnica e manter os respectivos cadastros atualizados, contendo os dados do processo de certificação técnica para a verificação pelo CONTRATANTE.</p>
+      </div>
+      <div class="wl-page">
+<p>3.8. Garantir que sua equipe seja certificada, nos termos da Resolução 4.935, de 29 de julho de 2021, do Conselho Monetário Nacional (CMN), por entidade de reconhecida capacidade técnica e manter os respectivos cadastros atualizados, contendo os dados do processo de certificação técnica para a verificação pelo CONTRATANTE.</p>
 <p>3.9. Afixar em local visível ao público o painel cujo modelo será fornecido pelo CONTRATANTE e que conterá, no mínimo, o nome como o CORRESPONDENTE é conhecido no mercado, a descrição dos dos produtos e serviços oferecidos em nome do CONTRATANTE e telefones dos serviços de atendimento e de ouvidoria do CONTRATANTE, disponibilizando essas informações também em seu em sua página inicial na internet, aplicativos e outras formas de comunicação disponíveis aos clientes.</p>
 <p>3.10. Supervisionar e coordenar a sua equipe que deverá estar identificada por crachá que indique denominação do CORRESPONDENTE, nome e CPF do atendente.</p>
 <p>3.11. Atender os Clientes e usuários sobre as demandas envolvendo esclarecimentos, obtenção de documentos, liberações, reclamações e outros referentes aos produtos e serviços fornecidos e encaminhá-los de imediato ao CONTRATANTE quando as questões não puderem ser resolvidas pela sua equipe.</p>
@@ -1664,13 +1663,17 @@
 <p>3.13. Para fins de fiscalização, permitir o acesso dos representantes do CONTRATANTE e do Banco Central do Brasil aos documentos relacionados à prestação de serviços objeto desse Contrato, ao processo de certificação técnica dos integrantes de sua equipe e às dependências do CORRESPONDENTE.</p>
 <p>3.14. Observar estritamente os termos da regulamentação que trata da atividade de correspondente no país, especialmente a Resolução 4.935, de 29 de julho de 2021, do Conselho Monetário Nacional (CMN), bem como a política de atuação de correspondente e plano de qualidade do CONTRATANTE e se submeter às medidas administrativas previstas pelo CONTRATANTE, desde que previamente comunicadas ao CORRESPONDENTE, ou por determinação do Banco Central do Brasil.</p>
 <p>3.14.1. O CORRESPONDENTE deve observar, rigorosamente, as disposições fixadas no Contrato, bem como toda e qualquer legislação aplicável à realização e segurança nas Operações, notadamente a regulamentação: i) do CMN e do BACEN, que será permanentemente atualizada por meio de comunicados encaminhados oficialmente pelo BANCO ao CORRESPONDENTE; ii) do Código de Defesa do Consumidor (“CDC”); iii) da Lei Geral de Proteção de Dados Pessoais (Lei n.º 13.709/2018); e iv) da Lei de Defesa da Concorrência - Antitruste (Lei n.° 12.529/2011).</p>
+      </div>
+      <div class="wl-page">
 <p>3.15. Reconhecer judicial ou extrajudicialmente a inexistência de vínculo empregatício entre as pessoas da sua equipe com o CONTRATANTE, responsabilizando-se exclusivamente por todas as despesas encargos ou obrigações legais, inclusive de natureza trabalhista, previdenciária, tributária, civil ou de qualquer outra natureza jurídica, ainda que não pecuniárias. Esta responsabilidade subsistirá, inclusive, em caso de reconhecimento de vínculo trabalhista de seus profissionais com o CONTRATANTE e/ou empresas pertencentes ao mesmo grupo econômico. Igualmente, o CONTRATANTE reconhece a inexistência de qualquer vinculação empregatícia entre seus empregados e o CORRESPONDENTE e assume as mesmas obrigações em relação a seus empregados.</p>
 <p>3.15.1. Diante de eventual ação judicial ou de qualquer ato de natureza administrativa, referente às pessoas da equipe do CORRESPONDENTE designados para a execução dos Serviços e/ou terceiros por ela subcontratados, inclusive decorrente de acidente de trabalho, reconhecimento de vínculo ou sucessão trabalhista, que venha a ser proposto contra o CONTRATANTE a que título e a que tempo for, o CORRESPONDENTE compromete-se a requerer a substituição do CONTRATANTE no polo passivo dos eventuais processos judiciais ou administrativos, e se responsabilizará integralmente pelo cumprimento de qualquer obrigação, pagamento ou ressarcimento de quaisquer valores, inclusive, multas, honorários advocatícios, custas processuais e demais encargos e despesas que tenham sido suportados pelo CONTRATANTE.</p>
-<p class="wl-break">3.15.2. O CONTRATANTE poderá definir fluxos e prazos para envio e recebimentos de subsídios do CORRESPONDENTE em ações judiciais, os quais, se aplicáveis, constarão como anexo a esse Contrato.</p>
+<p>3.15.2. O CONTRATANTE poderá definir fluxos e prazos para envio e recebimentos de subsídios do CORRESPONDENTE em ações judiciais, os quais, se aplicáveis, constarão como anexo a esse Contrato.</p>
 <p>3.16. Os valores desembolsados ou depositados pelo CONTRATANTE em decorrência de quaisquer ações judiciais movidas por pessoas da equipe do CORRESPONDENTE, para se defender, recorrer ou cumprir eventual condenação, são, desde já, reconhecidos pelo CORRESPONDENTE como dívida sua, líquida, certa e exigível.</p>
 <p>3.16.1. Os valores que eventualmente venham a ser desembolsados ou depositados pelo CONTRATANTE no âmbito      das     ações     judiciais,    para   se   defender,     recorrer    ou    cumprir  eventual condenação, são, desde já, reconhecidos pelo CORRESPONDENTE como dívida sua, líquida, certa e exigível para todos os fins e efeitos de direito. Por essa razão, o CORRESPONDENTE obriga-se em ressarcir ao CONTRATANTE os referidos valores, no prazo de até 48 (quarenta e oito) horas após notificado para tanto. No caso de depósitos ressarcidos pelo CORRESPONDENTE, caso haja recuperação, total ou parcial, o CONTRATANTE destinará ao CORRESPONDENTE o montante levantado.</p>
 <p>3.17. Realizar os acertos financeiros com o CONTRATANTE na periodicidade máxima prevista no Anexo I não se enquadrando, nesta disposição, os valores relativos à remuneração e/ou premiações, estes últimos, se aplicável, a que o CORRESPONDENTE faça jus a receber do CONTRATANTE.</p>
 <p>3.18. Emitir o correspondente Documento Fiscal por ocasião do pagamento da remuneração pela prestação dos serviços, observando as disposições da Cláusula 2.2 e subitens, bem como as obrigações previstas no Anexo I.</p>
+      </div>
+      <div class="wl-page">
 <p>3.18.1. Se responsabilizar por todos os tributos municipais, estaduais e federais e encargos de qualquer natureza incidentes sobre a remuneração aqui prevista, sendo certo de que nenhum ônus será imputado ao CONTRATANTE, inclusive o ISSQN (Imposto Sobre Serviços de Qualquer Natureza).</p>
 <p>3.18.2. Fica expressamente pactuado entre as partes que os pagamentos oriundos deste Contrato somente serão realizados se restar plenamente constatado pelo CONTRATANTE, quando do vencimento, o efetivo cumprimento de todas as obrigações impostas neste Contrato ao CORRESPONDENTE, de     forma      que      qualquer      inadimplemento    e/ou     atraso     no    cumprimento   destas ensejará a imediata suspensão dos pagamentos , até que a referida obrigação seja cumprida, quando então o CONTRATANTE regularizará o pagamento sem quaisquer acréscimos.</p>
 <p>3.18.3. Caso a Nota Fiscal de Serviços não seja emitida pelo CORRESPONDENTE, nos termos da legislação em vigor, o CONTRATANTE se reserva ao direito de efetuar a quitação das remunerações devidas, com as respectivas retenções tributárias e cumprimento das obrigações acessórias pertinentes. O CORESPONDENTE, neste caso, será responsável por eventual ressarcimento de tributos e de outros encargos tributários pagos pelo CONTRATANTE e pelas consequências tributárias caso venha a apresentar a Nota Fiscal de Serviços posteriormente.</p>
@@ -1678,11 +1681,12 @@
 <p>3.19 Manter inscrição no regime tributário adequado à prestação dos serviços objeto do Contrato e o recolhimento dos tributos deverá ser realizado nos termos da legislação vigente.</p>
 <p>3.20. Executar os serviços em seus estabelecimentos, indicados neste Contrato. O CORRESPONDENTE deve manter sempre atualizado junto ao CONTRATANTE os seus pontos de atendimento.</p>
 <p>3.21. Manter, durante toda a vigência do Contrato, a regularidade fiscal, societária e financeira, fornecendo documentos comprobatórios dessa regularidade sempre que solicitado pelo CONTRATANTE e em caso de alteração societária, entregar cópia autenticada do respectivo documento ao CONTRATANTE, devidamente registrado no respectivo órgão competente, em até 30 (trinta) dias contados da data do do registro da respectiva alteração societária.</p>
-<p class="wl-break">3.22. Ressarcir o CONTRATANTE quando a Operação não tiver sido corretamente formalizada, por culpa do</p>
-
+<p>3.22. Ressarcir o CONTRATANTE quando a Operação não tiver sido corretamente formalizada, por culpa do</p>
 <p>CORRESPONDENTE. O ressarcimento será realizado mediante débito na conta corrente do CORRESPONDENTE indicada no Anexo I, compensada contra remunerações futuras ou por meio de pagamento de boleto representativo de tais valores a ser emitido pelo CONTRATANTE.</p>
 <p>3.23. Estar constituído como pessoa jurídica nos termos da Lei nº 10.406/2002 Código Civil, possuir objeto social adequado em seus atos constitutivos, bem como códigos de atividade econômica (CNAE – Classificação Nacional de Atividades Econômicas) específico para a prestação de serviços objeto deste Contrato durante todo o período de vigência.</p>
 <p>3.24. Respeitar a política de atuação e de contratação estabelecida pelo CONTRATANTE, a qual será previamente encaminhada pelo CONTRATANTE ao CORRESPONDENTE.</p>
+      </div>
+      <div class="wl-page">
 <p>3.25. Deixar claro em sua abordagem comercial, de forma inequívoca, sua condição de CORRESPONDENTE para prestação do serviço de correspondente.</p>
 <p>3.26. O CORRESPONDENTE tem conhecimento de que para a realização de serviços que exijam acesso a sistemas de informática, o início da prestação de tais serviços fica condicionado à habilitação a ser realizada pelo CONTRATANTE que, por sua vez, não se responsabiliza pelos custos de ajustes estruturais que eventualmente sejam necessários ao CORRESPONDENTE.</p>
 <p>3.27. Observar as disposições estabelecidas na legislação em vigor, relativamente à segurança, prevenção e combate às atividades relacionadas com os crimes previstos na Lei nº 9.613/98;</p>
@@ -1691,22 +1695,24 @@
 <p>3.29. Garantir, por si e seus funcionários, adequado atendimento ao público considerado potencialmente vulnerável, nos termos dispostos no normativo Autorregulação Febraban SARB 027/23 e conhecimento das comunicações enviadas pelo CONTRATANTE que lhe permitam conhecer temas voltados à proteção e direitos dos consumidores potencialmente vulneráveis, bem como à abordagem adequada a esse público, promovendo, as suas expensas, treinamento e capacitação aos integrantes da sua equipe quanto ao tratamento do cliente considerado potencialmente vulnerável.</p>
 <p>3.30. Informar ao cliente, previamente à contratação, sobre o serviço remunerado pela Tarifa de Cadastro, consistente na pesquisa em serviços de proteção ao crédito, cartórios, base de dados e informações cadastrais, e tratamento de dados e informações necessários à contratação de operação de crédito/arrendamento mercantil, informando-o, ainda, sobre a possibilidade de:(i) o cliente realizar o serviço às suas expensas, hipótese em que deverá apresentar cópias autenticadas ou os originais dos seguintes documentos: documento com foto; CPF; comprovante de residência e de renda ou patrimônio; pesquisa em bancos de dados e de proteção ao crédito (SERASA ou Boavista); certidões de cartórios de protesto de seu domicílio; certidão de regularidade do CPF expedida pela Receita Federal. Neste caso, o cliente não pagará a Tarifa de Cadastro; (ii) o cliente contratar o CONTRATANTE para realizar esse serviço, caso em que poderá fazer o pagamento Tarifa de Cadastro à vista ou financiada.</p>
 <p>3.31. Realizar o atendimento aos clientes e usuários com qualidade técnica compatível com a natureza e o risco das Operações.</p>
+      </div>
+      <div class="wl-page">
 <p>3.32. Solicitar prévia e expressamente a aprovação do CONTRATANTE para veiculação de materiais publicitários e de apoio às vendas em que forem divulgados os produtos, os serviços, o nome ou a logomarca do CONTRATANTE, obrigando-se a indenizar o CONTRATANTE e terceiros diante de prejuízos ou danos, inclusive à imagem, em razão de ações de marketing não autorizadas expressamente pelo CONTRATANTE.</p>
 <p>3.33. Caso os funcionários, prepostos ou contratados do CORRESPONDENTE venham a se utilizar, em seus</p>
-
 <p>uniformes ou outras vestimentas de trabalho, de marcas, logomarcas ou qualquer outra forma de identificação do CONTRATANTE e/ou de seus produtos, o CORRESPONDENTE obriga-se a colher de seus funcionários, prepostos ou contratados autorização específica no qual eles autorizem, de forma gratuita, o uso de suas imagens associadas àquelas marcas ou logomarcas, ficando o CORRESPONDENTE obrigado a: (i) obter prévia autorização formal do CONTRATANTE para esse uso; (ii) manter essas autorizações em seu poder por até 11 (onze) anos contados do encerramento deste Contrato; e (iii) apresentar ao CONTRATANTE essas autorizações, sempre que exigido por este, no prazo de até 2 (dois) dias úteis contados da solicitação.</p>
 <p>3.34. O CORRESPONDENTE deverá assegurar que o atendimento, a comunicação e a experiência do cliente por meio de sistema eletrônico observem os requisitos de: (i) oferta de produtos e serviços adequados às necessidades, interesses e objetivos dos clientes; (ii) prestação de informações necessárias à livre escolha e à tomada de decisões por parte dos clientes; e (iii) utilização de linguagem clara e adequada à natureza e à complexidade das operações.</p>
 <p>3.35. No desenvolvimento de atividades de recepção e encaminhamento de propostas referentes a operações de crédito e de arrendamento mercantil de concessão do CONTRATANTE, cumprir o que segue:</p>
 <p>(i) apresentar aos clientes, durante o atendimento, os planos oferecidos pelo CONTRATANTE e pelas demais instituições financeiras para as quais preste os serviços de correspondente no País;</p>
 <p>(ii) identificar os integrantes da equipe do CORRESPONDENTE, que prestem atendimento ao público, mediante uso de crachá contendo, de forma visível aos usuários e clientes, a denominação do CORRESPONDENTE, o nome da pessoa e seu número de registro no Cadastro de Pessoas Físicas (CPF).</p>
 <p>(iii) enviar, juntamente com a documentação encaminhada ao CONTRATANTE para análise de proposta referente a operações de crédito e de arrendamento mercantil, a identificação do integrante da equipe do CORRESPONDENTE responsável pelo atendimento, contendo nome e o número de inscrição no CPF/ME, informando sua certificação ou a certificação do membro responsável, conforme o caso. Para fins de cumprimento deste item, na hipótese de contratação por meio da plataforma eletrônica deve ser identificada a pessoa natural responsável pela plataforma, devendo, ainda referida pessoa ser considerada apta em exame de certificação.</p>
+      </div>
+      <div class="wl-page">
 <p>(iv) garantir que uma pessoa por ponto de atendimento seja considerada apta em exame de certificação organizado por entidade de reconhecida capacidade técnica, que deve ter por base processo de capacitação que aborde, no mínimo, os aspectos técnicos das operações, a regulamentação aplicável, a Lei nº 13.709, de 14 de agosto de 2018 (Lei Geral de Proteção de Dados Pessoais), o Código de Defesa do Consumidor, ética e Ouvidoria. O CORRESPONDENTE deverá manter cadastro dos integrantes certificados permanentemente atualizado, contendo os dados sobre o respectivo processo de certificação, com acesso a consulta pelo CONTRATANTE a qualquer tempo.</p>
 <p>(v) repassar aos clientes as informações fornecidas pelo CONTRATANTE a respeito do CET, previamente à contratação da Operação, mediante a entrega do respectivo documento (“Orçamento da Operação”) e havendo proposta de adesão ao seguro, contratado nas operações, informar aos clientes o prêmio devido e as características do produto;</p>
 <p>(vi) divulgar nos informes publicitários o CET e esclarecimento que a liberação de qualquer crédito estará sujeita à aprovação da instituição financeira;</p>
 <p>(vii) esclarecer prévia e adequadamente os clientes a respeito de toda a documentação necessária à efetivação da Operação, incluindo o respectivo Orçamento de Operação, a cédula de crédito bancário e/ou contrato de arrendamento mercantil (Condições Específicas e Condições Gerais) e a proposta de adesão ao seguro, se contratado nas Operações;</p>
 <p>(viii) obter prévia autorização dos proponentes, clientes e respectivos devedores solidários, se existentes, para consulta pelo CONTRATANTE junto ao Sistema de Informação de Crédito, organizado pelo Banco Central do Brasil, quando dos serviços e produtos oferecidos;</p>
 <p>(ix) manter o sigilo a respeito de todos os dados, informações e documentos, inclusive fotografias, que</p>
-
 <p>vier a ter acesso em decorrência deste Contrato, em especial os relativos às operações, inclusive suas cotações e simulações, que não poderão ser usados pelo CORRESPONDENTE, sob qualquer meio ou forma, sob pena de responder pelos danos causados ao CONTRATANTE e/ou a terceiros e obter prévia autorização dos proponentes e clientes, para captação de sua imagem por meio de fotografia com o objetivo exclusivo de compor a documentação necessária à efetivação da Operação.</p>
 <p><b>4. VEDAÇÕES AO CORRESPONDENTE.</b> É vedado ao CORRESPONDENTE:</p>
 <p>4.1. Efetuar adiantamento por conta de recursos a serem eventualmente liberados pelo CONTRATANTE.</p>
@@ -1714,6 +1720,8 @@
 <p>4.3. Oferecer aos clientes quaisquer produtos ou serviços do CONTRATANTE para os quais não esteja autorizado.</p>
 <p>4.4. Figurar como garantidor nas operações, exceto nos casos permitidos em norma, desde que previamente autorizados pelo CONTRATANTE.</p>
 <p>4.5. Transferir sua posição contratual ou qualquer obrigação decorrente desse Contrato ou substabelecê-lo em um único nível sem prévia e expressa anuência do CONTRATANTE.</p>
+      </div>
+      <div class="wl-page">
 <p>4.6. Utilizar de instalações cuja configuração arquitetônica, logomarca e placas indicativas sejam similares às adotadas pelo CONTRATANTE em suas agências e postos de atendimento, sítio eletrônico na internet, aplicativo ou outras plataformas de comunicação em rede e, igualmente, prestar os serviços objeto deste Contrato no recinto de alguma dependência própria do CONTRATANTE .</p>
 <p>4.6.1. Caberá ao CORRESPONDENTE solicitar prévia e expressamente a aprovação do CONTRATANTE para veiculação de materiais publicitários e de apoio às vendas em que forem divulgados os produtos, os serviços, o nome ou a logomarca do CONTRATANTE.</p>
 <p>4.7. Realizar a prestação dos serviços de correspondente no país previsto neste Contrato sem observar o plano de qualidade do atendimento e as orientações operacionais que forem disponibilizadas pelo CONTRATANTE, nos termos da cláusula 3.6, ou demais obrigações previstas neste Contrato.</p>
@@ -1721,13 +1729,14 @@
 <p>4.8. Receber intimação, notificação, interpelação ou citação, em nome do CONTRATANTE, vez que não possui poderes para tal fim, devendo, via de consequência, informar ao Oficial de Justiça, encarregado da diligência, o endereço do CONTRATANTE, para o devido cumprimento da intimação, notificação, interpelação ou citação.</p>
 <p><b>5. OBRIGAÇÕES DO CONTRATANTE.</b> O CONTRATANTE deverá:</p>
 <p>5.1. Fornecer o material de promoção, divulgação e demonstração das operações, seus respectivos modelos de contratos e planilha de Custo Efetivo Total – CET, manuais operacionais e técnicos, plano de qualidade bem como tabela de tarifas e painel a serem afixados pelo CORRESPONDENTE.</p>
-
 <p>5.2. Colocar à disposição do CORRESPONDENTE, documentação técnica adequada e manter canal de comunicação permanente para prestar os esclarecimentos sobre seus produtos e serviços.</p>
 <p>5.3. Reconhecer a inexistência de vínculo empregatício entre seus empregados ou terceirizados e o CORRESPONDENTE.</p>
 <p>5.4. Liberar os recursos a favor da empresa fornecedora e/ou conforme definido no Anexo I, podendo a liberação ser realizada pelo CORRESPONDENTE por conta e ordem do CONTRATANTE por meio de autorização escrita e específica e desde que, diariamente, o valor total dos pagamentos realizados seja idêntico ao dos recursos recebidos do CONTRATANTE para tal fim.</p>
 <p>5.5. Divulgar na página da internet disponível a todos os interessados, por telefone ou por outros meios que o BACEN e/ou o CMN venham a exigir, o endereço, CNPJ, razão social e nome fantasia do CORRESPONDENTE, bem como todos os seus pontos de atendimento e os serviços a que está habilitado a prestar ao CONTRATANTE. O CORRESPONDENTE desde já autoriza o CONTRATANTE a divulgar essas informações.</p>
 <p><b>6. PRAZO.</b> Este Contrato vigorará por prazo indeterminado.</p>
 <p><b>7. RESILIÇÃO E RESCISÃO.</b></p>
+      </div>
+      <div class="wl-page">
 <p>7.1. Este Contrato poderá ser resilido por qualquer dar Partes mediante aviso prévio, observada a antecedência prevista no Anexo I, sem a incidência de qualquer ônus.</p>
 <p>7.2. Em caso de infração de quaisquer das cláusulas ou condições aqui estipuladas, por qualquer das Partes, poderá a Parte inocente rescindir o presente Contrato de imediato e independentemente de notificação judicial ou extrajudicial, respondendo ainda a Parte infratora pelo pagamento de perdas e danos a serem ajustados de comum acordo ou apuradas em decorrência de processo legal regular.</p>
 <p>7.3. Poderá ensejar, por livre e exclusivo critério do CONTRATANTE, a suspensão temporária ou a rescisão imediata deste Contrato, independentemente de qualquer notificação prévia, se o CORRESPONDENTE:</p>
@@ -1741,13 +1750,14 @@
 <p>(viii) se o BACEN recomendar e/ou determinar a suspensão do atendimento prestado ao público pelo CORRESPONDENTE ou encerramento antecipado deste Contrato;</p>
 <p>(ix) se ocorrer alteração dos convênios mantidos pelo CONTRATANTE e os novos valores inviabilizarem economicamente a atividade, sem que exista predisposição para uma nova negociação entre as Partes; e</p>
 <p>(x) se aplicável, nas hipóteses adicionais previstas nos termos do Anexo I.</p>
-
 <p>7.4. Poderá ainda ensejar, por livre e exclusivo critério do CORRESPONDENTE, a suspensão temporária ou a rescisão imediata deste Contrato, independentemente de qualquer notificação prévia, se o CONTRATANTE:</p>
 <p>(i) tiver sua liquidação decretada pela BACEN;</p>
 <p>(ii) encerrar suas atividades;</p>
 <p>(iii) se o BACEN determinar a suspensão do atendimento prestado ao público pelo CONTRATANTE ou encerramento antecipado deste Contrato.</p>
 <p>7.5. Em qualquer hipótese de extinção, todos os documentos, informações e se aplicável, também equipamentos e infraestruturas, do CONTRATANTE, inclusive as que disserem respeito ao cadastro dos Clientes e às operações deverão ser restituídos imediatamente, sendo vedada a sua utilização e tornando- se os representantes legais do CORRESPONDENTE fiéis depositários de todo e qualquer bem relacionado à prestação dos serviços enquanto não ocorrer a devolução ao CONTRATANTE.</p>
 <p>7.6. Demais disposições sobre as consequências da resilição ou da rescisão deste Contrato poderão ser estipuladas em anexo específico.</p>
+      </div>
+      <div class="wl-page">
 <p>7.7. Qualquer que seja a causa que motivou a resilição ou rescisão deste Contrato por qualquer uma das Partes, os valores a que já fizer jus o CORRESPONDENTE deverão ser pagos pelo CONTRATANTE, ressalvado o direito de o CONTRATANTE compensar eventuais valores devidos pelo CORRESPONDENTE.</p>
 <p><b>8. TRIBUTOS.</b> Todos os tributos são de responsabilidade do respectivo contribuinte devendo ser pagos por ele ou pela fonte pagadora, quando atribuída a esta última a condição de responsável pela retenção e recolhimento.</p>
 <p><b>9. CONFIDENCIALIDADE E SIGILO BANCÁRIO.</b> As Partes deverão manter a confidencialidade e o sigilo bancário das informações, inclusive as que disserem respeito ao cadastro dos clientes e às operações, que tiver acesso em razão deste Contrato, mesmo após a extinção deste Contrato.</p>
@@ -1760,9 +1770,10 @@
 <p>(ii) deletará ou destruirá todos os arquivos que contenham Informações Confidenciais.</p>
 <p>9.4. O CORRESPONDENTE adotará as providências necessárias para que: (a) as Informações Confidenciais sejam conhecidas apenas por seus representantes legais e profissionais necessários à execução dos Detalhes Operacionais e (b) tais representantes e profissionais tenham ciência da obrigação de preservação da confidencialidade a respeito deste Contrato e das Informações Confidenciais.</p>
 <p>9.4.1. O CONTRATANTE poderá, a qualquer momento, solicitar a comprovação do cumprimento</p>
-
 <p>da obrigação mencionada no subitem precedente e, conforme o caso e a natureza dos serviços, a subscrição de termos de sigilo específicos, solicitação que deverá ser atendida pelo CORRESPONDENTE no prazo máximo de 05 (cinco) dias úteis.</p>
 <p>9.4.1.1. Desde já o CORRESPONDENTE se obriga a entregar a documentação referida no item 9.4.1 acima em prazo inferior a 05 (cinco) dias úteis caso o CONTRATANTE indique a necessidade de recebê-la com maior antecedência para viabilizar atendimento de prazo judicial ou administrativo a que esteja sujeito.</p>
+      </div>
+      <div class="wl-page">
 <p>9.5. Caso seja disponibilizado sistema informatizado pelo CONTRATANTE, o CORRESPONDENTE se obriga a observar fielmente a Política de Segurança da Informação do CONTRATANTE, inclusive quanto a não revelação de senha e login de acesso.</p>
 <p>9.5.1. Se solicitado pelo CONTRATANTE, o CORRESPONDENTE indicará um “Usuário Máster”, que será previamente cadastrado junto ao CONTRATANTE. O Usuário Máster será o responsável pela concessão e bloqueio de novos acessos a funcionários do CORRESPONDENTE. Todos os usuários, inclusive o Usuário Máster, devem, sob pena de exclusão do acesso: (i) ser representante legal nomeado no contrato social ou manter vínculo empregatício com o CORRESPONDENTE, o que deverá ser comprovado ao CONTRATANTE sempre que solicitado; e (ii) ser devidamente certificados.</p>
 <p>9.5.2. Para fins de indicação de “Usuário Máster” o CORRESPONDENTE indica o e-mail a seguir:</p>
@@ -1770,26 +1781,30 @@
 <p>9.5.4. Em caso de alteração do “Usuário Máster” indicado na cláusula 9.5.2, fica o CORRESPONDENTE obrigado a comunicar novo e-mail para fins de regularização do novo cadastro.</p>
 <p><b>10. DECLARAÇÕES E COMPLIANCE.</b> Atentas às disposições contidas na Lei nº 12.846, de 1º de agosto de 2013, as Partes declaram possuir códigos próprios de conduta que contemplam as diretrizes e os princípios de comportamento ético a que se subordinam os seus administradores, empregados e colaboradores, e programas de compliance que estabelecem regras claras para para a condução e supervisão das suas atividades, que definem critérios objetivos para avaliação da conformidade de suas condutas com os preceitos legais e com as demais normas a que se sujeitam, contando com estruturas e procedimentos voltados a coibir ou a impedir a prática de infrações à referida Lei e às demais com semelhante ou relacionado escopo e a identificar desvios de conduta de seus administradores, empregados e demais colaboradores a elas direta ou indiretamente vinculados.</p>
 <p>10.1. Salvo disposição distinta prevista em anexo, CORRESPONDENTE que não possuir código de ética próprio obriga-se a cumprir, de forma irrevogável e irretratável, o Código de Ética do CONTRATANTE, que lhe será encaminhado por e-mail ou via física, com aviso de recebimento ou emissão de recibo, a critério do CONTRATANTE.</p>
+      </div>
+      <div class="wl-page">
 <p>10.2. As Partes se comprometem a pautar suas condutas nos princípios de eticidade, não discriminação, isonomia e no respeito às liberdades e autodeterminação do ser humano, respeitando e promovendo a diversidade, abstendo-se de todas as formas de preconceito e discriminação, de modo que nenhuma pessoa, seja dentro de sua instituição e/ou nos estabelecimentos do CONTRATANTE, receba tratamento discriminatório em função de sua raça, cor de pele, origem étnica, nacionalidade, posição social, idade, religião, gênero, orientação sexual, estética pessoal, condição física, mental ou psíquica, estado civil, opinião, convicção política, ou qualquer outro fator de diferenciação. Consideram-se práticas discriminatórias todas as ações ou omissões realizadas em razão dos fatores mencionados violadoras do princípio da igualdade. Assim, caso venha a ser de conhecimento de qualquer uma das Partes, a ocorrência de atos ou práticas que contrariem tais condutas pela Parte contrária, a outra Parte poderá rescindir.</p>
 <p>10.3. O CORRESPONDENTE declara para os devidos fins e efeitos que os recursos decorrentes deste Contrato não serão destinados a quaisquer finalidades que possam causar danos sociais e não serão</p>
-
 <p>destinados, também, a quaisquer finalidades e/ ou projetos que não atendam rigorosamente a política nacional de meio-ambiente as disposições das normas legais e regulamentares que regem tal Política.</p>
 <p>10.4. As Parte reconhecem a importância e se comprometem por si e por seus colaboradores a respeitar e a contribuir com o cumprimento dos Princípios Constitucionais, dos Direitos e Garantias Fundamentais e dos Direitos Sociais previstos na Constituição Federal, tais como, mas não limitadamente: (I) evitar qualquer forma de discriminação; (ii) respeitar o meio ambiente; (iii) repudiar o trabalho escravo e infantil; (iv) garantir a liberdade de seus colaboradores em se associarem a sindicatos e negociarem coletivamente direitos trabalhistas; (v) colaborar para um ambiente de trabalho seguro e saudável;(vi) evitar o assédio moral e sexual; (vii) compartilhar este compromisso de Responsabilidade Social na cadeia de fornecedores; (viii) trabalhar contra a corrupção em todas as suas formas, incluída a extorsão e o suborno.</p>
 <p>10.5. Atenta as disposições contidas no artigo 9º e Inciso IV do artigo 10º da Lei nº 9.613/1998, combinado com o art. 8º da Resolução COAF nº 25/2013, o CORRESPONDENTE que comercializa veículos automotores, obriga-se a implementar mecanismos de controle de prevenção à lavagem de dinheiro e a ainda a se cadastrar junto ao COAF (www.coaf.fazenda.gov.br), sob risco de imposição de multa pelo COAF.</p>
 <p>10.6. Demais disposições relativas a obrigações ou declarações de compliance, em especial, prevenção a lavagem de dinheiro, condutas éticas, prevenção a corrupção, princípios de preservação do meio ambiente e demais disposições relacionadas a políticas internas do CONTRATANTE, se aplicáveis ao CORRESPONDENTE, serão previstas em anexo específico.</p>
 <p><b>11. DA PROTEÇÃO DE DADOS PESSOAIS.</b> O tratamento de dados pessoais observará o disposto no Anexo II a este Contrato (Anexo II – Tratamento de Dados Pessoais).</p>
 <p>12. DAS DEPENDÊNCIAS</p>
+      </div>
+      <div class="wl-page">
 <p>12.1 O CORRESPONDENTE comunicará ao CONTRATANTE qualquer alteração relacionada aos locais de atendimento, a cada criação, alteração ou extinção de suas dependências, para que o CONTRATANTE promova a devida atualização do cadastro perante o Banco Central.</p>
 <p>12.2. O CORRESPONDENTE obriga-se a comunicar previamente ao CONTRATANTE, sempre que houver qualquer ocorrência que implique na alteração da denominação social, número de inscrição no CNPJ e endereço da sua sede ou dependências, a fim de que o CONTRATANTE possa comunicá-las ao Banco Central do Brasil, no prazo máximo de 2 (dois) dias a contar da data da alteração, sob pena de se responsabilizar por qualquer prejuízo causado ao CONTRATANTE quanto às obrigações tributárias, inclusive a retenção de tributos, quando devida, nos termos da legislação aplicável.</p>
 <p>12.3. Sempre que solicitado pelo CONTRATANTE, com prazo mínimo de 05 (cinco) dias úteis de antecedência, o CORRESPONDENTE deverá fornecer (i) certificados e certidões na forma exigida ou habitual a fim de comprovar que está em situação regular perante as autoridades fiscais (federais, estaduais e municipais) e previdenciárias e (ii) cópias autenticadas das guias de recolhimentos previdenciários e fundiários do mês imediatamente anterior ao da prestação dos Serviços.</p>
 <p>12.3.1. Desde já o CORRESPONDENTE se obriga a entregar toda a documentação referida no item 12.3 acima em prazo inferior a 05 (cinco) dias úteis caso o CONTRATANTE indique a necessidade de recebê-la com maior antecedência para viabilizar atendimento de prazo judicial ou administrativo a que esteja sujeito.</p>
-
 <p><b>13. DISPOSIÇÕES GERAIS.</b> O presente Contrato não confere qualquer exclusividade às Partes.</p>
 <p>13.1 A abstenção, por qualquer das Partes, no exercício de qualquer direito ou a tolerância para o cumprimento de quaisquer obrigações não constituirá novação.</p>
 <p>13.2. O CORRESPONDENTE declara que tem pleno conhecimento de que a realização por sua própria conta, das operações privativas do CONTRATANTE ou de outras operações vedadas pela legislação vigente sujeitará o CORRESPONDENTE as penalidades previstas nas Leis n.º 4.595/64 e n.º 7.492/86.</p>
 <p>13.3. As Partes poderão estabelecer restrição quanto a relação de emprego com pessoas que tenham sido dispensadas pelas Partes antes de decorridos dois anos do desligamento.</p>
 <p>13.4. O CONTRATANTE e o Banco Central poderão adotar medidas para a verificação da existência de fatos que a seus critérios, desabonem o CORRESPONDENTE ou seus administradores, estabelecendo medidas preventivas e corretivas que incluem a suspensão da prestação dos serviços e a extinção do Contrato.</p>
 <p>13.5. Todas as comunicações entre as Partes serão consideradas válidas quando realizadas por meio de Cartas ou e-mails para os endereços indicados no preâmbulo ou através do sistema informatizado, quando o CONTRATANTE os disponibilizar ao CORRESPONDENTE.</p>
+      </div>
+      <div class="wl-page">
 <p>13.6. As Partes autorizam o envio, pela outra, de informações relativas aos serviços objeto do deste Contrato por meio de cartas, e-mails, Short Message Service (SMS), aplicativos de mensagens, telefone e demais meios de comunicação fornecidos, inclusive para divulgar atualizações de políticas internas e/ou demais comunicações relevantes para execução deste Contrato e também, se aplicável, ofertar entre si seus produtos e serviços.</p>
 <p>13.7. Caso o CONTRATANTE não estabeleça fluxo distinto em anexo, este Contrato poderá ser alterado pelas Partes por meio eletrônico, confirmada por meio de aposição de senha do CORRESPONDENTE, cujo acesso será disponibilizado a ele, ou por aceite das novas condições pelo CORRESPONDENTE, caso a alteração se dê por e-mail. Após a aposição da senha ou aceite, as novas disposições passarão a vigorar entre as Partes, de forma irrevogável e irretratável, independentemente de outra formalidade adicional, integrando este Contrato para todos os fins de direito, e substituindo os acordos anteriormente celebrados entre as Partes.</p>
 <p>13.8. Para todos os fins e efeitos contratuais e legais, os manuais, disponibilizados pelo CONTRATANTE, ordens, instruções e demais documentos informativos transmitidos e/ou entregues pelo CONTRATANTE ao CORRESPONDENTE serão parte integrante e complementar deste Contrato, como se aqui estivessem transcritos, regerão as relações jurídicas entre o CONTRATANTE e o CORRESPONDENTE.</p>
@@ -1798,8 +1813,9 @@
 <p>14.2. Deverá, o CORRESPONDENTE, proibir reuniões entre representantes do BANCO e seus concorrentes dentro de suas dependências.</p>
 <p>14.3. Caso tenha conhecimento de qualquer ato suspeito entre representantes do BANCO e seus concorrentes, ou entre quaisquer pessoas, dentro ou fora das dependências do CORRESPONDENTE, deverá imediatamente comunicar ao Departamento Jurídico do BANCO, por escrito, que, através de núcleo próprio, tomará as medidas necessárias.</p>
 <p>14.4. Com relação ao comportamento esperado do CORRESPONDENTE, este não deverá praticar atos lesivos à concorrência, tais como: participar de conluio com seus concorrentes a fim de fixar preços, dividir mercados, praticar boicotes coletivos, praticar discriminação nas vendas e outros previstos na Lei de Defesa da Concorrência.</p>
-
 <p>14.5. O CORRESPONDENTE deverá disponibilizar sua equipe, especialmente de vendas, para participar de treinamentos relacionados à Lei de Defesa da Concorrência, ministrados pelo BANCO, ainda que de forma virtual, sempre que solicitado.</p>
+      </div>
+      <div class="wl-page">
 <p><b>15. ASSINATURA ELETRÔNICA.</b> As PARTES entendem e concordam que têm o direito de assinar os INSTRUMENTOS CONTRATUAIS por tecnologia de assinatura eletrônica e não irão, em nenhum momento no futuro, repudiar o significado de sua assinatura eletrônica ou alegar que sua assinatura eletrônica não é juridicamente válida. As PARTES concordam em não se opor à admissibilidade dos INSTRUMENTOS CONTRATUAIS como um registro eletrônico, ainda que seja firmado com assinatura eletrônica ou certificação fora dos padrões ICP-BRASIL, conforme autorizado pelo artigo 10, §2º da Medida Provisória nº 2.200-2 de 24 de agosto de 2001.</p>
 <p><b>16. FORO.</b> As Partes optam pelo Foro da comarca da Capital do Estado de São Paulo para eventual discussão sobre as condições estabelecidas.</p>
 <p class="sig-date"><span class="out" data-field="cidade" data-ph="[cidade]">[cidade]</span>, <span class="out" data-field="data_assinatura" data-ph="[data]">[data]</span></p>
@@ -1814,7 +1830,6 @@
   <div class="sig-field-plain"><span class="sig-line-label">RG :</span></div>
   <div class="sig-field-plain"><span class="sig-line-label">RG :</span></div>
 </div>
-
 <p class="anexo-title">ANEXO I – CONDIÇÕES COMERCIAIS E OPERACIONAIS</p>
 <p><b>1. OBJETO DA PRESTAÇÃO DE SERVIÇOS:</b></p>
 <div class="chkline"><span class="chk">X</span>coleta de informações cadastrais</div>
@@ -1838,7 +1853,6 @@
 <p>Outro informações ou documentos a serem encaminhadas com os Documentos Fiscais:</p>
 <div class="chkline"><span class="chk">&nbsp;</span>Não aplicável</div>
 <div class="chkline"><span class="chk">&nbsp;</span>Aplicável: [indicar]</div>
-
 <p>2.5. Acertos financeiros entre o CORRESPONDENTE e o CONTRATANTE:</p>
 <div class="chkline"><span class="chk">X</span>Nos termos previstos no Contrato.</div>
 <div class="chkline"><span class="chk">&nbsp;</span>Periodicidade máxima de [ ] dias úteis;</div>
@@ -1859,8 +1873,9 @@
 <div class="chkline"><span class="chk">&nbsp;</span>Aplicável, conforme segue:</div>
 <p>6. FORMA DE COMUNICAÇÃO ENTRE O CONTRATANTE E O CORBAN</p>
 <p>A comunicação deverá ser feita por e-mail através dos canais MKT Letter e News.</p>
-
 <p class="anexo-title">ANEXO II – TRATAMENTO DE DADOS PESSOAIS</p>
+      </div>
+      <div class="wl-page">
 <p>1. As Partes, por si e por seus funcionários, obrigam-se, sempre que aplicável, a atuar no presente Contrato em conformidade com a legislação vigente sobre proteção de dados relativos a uma pessoa física (“Titular”) identificada ou identificável (“Dados Pessoais”) e as determinações de órgãos reguladores/fiscalizadores sobre a matéria, em especial a Lei n.º 13.709/2018 (“Lei Geral de Proteção de Dados Pessoais”), além das demais normas e políticas de proteção de Dados Pessoais de cada país onde houver qualquer tipo de tratamento de Dados relativos às Partes e à execução deste Contrato, o que inclui os dados dos clientes ou potenciais clientes das Partes, devendo, ainda, observar rigorosamente as medidas de Segurança da Informação e Proteção de Dados Pessoais publicadas pelo Banco VW.</p>
 <p>2. Cada Parte continuará sendo a titular e a proprietária dos seus dados (“Dados”), bem como será responsável por quaisquer dados de terceiros, inclusive Dados Pessoais compartilhados no âmbito da execução do objeto deste Contrato, a qualquer título.</p>
 <p>3. Cada Parte monitorará, por meios adequados, sua própria conformidade e a de seus funcionários e operadores com as respectivas obrigações relativas à proteção de Dados Pessoais.</p>
@@ -1868,10 +1883,11 @@
 <p>5. Uma vez coletados, os Dados Pessoais deverão ser tratados pelas Partes, incluindo todos os seus funcionários, de forma confidencial e com o mesmo nível de segurança que tratam seus dados e informações de caráter confidencial, em linha com o estabelecido na Cláusula de Confidencialidade deste Contrato, ainda que este instrumento venha a ser resolvido e independentemente dos motivos que deram causa ao seu término ou resolução.</p>
 <p>6. Todo e qualquer tratamento de Dados Pessoais fora do Brasil dependerá de acordo prévio e expresso entre as Partes nesse sentido.</p>
 <p>7. O CORRESPONDENTE será responsável por coletar, processar e utilizar os respectivos Dados Pessoais, no cadastramento e oferecimento dos serviços financeiros, sendo o ponto focal de de relacionamento com os clientes ou potenciais clientes, devendo adotar medidas técnicas e</p>
-
 <p>organizacionais para garantir a segurança e a confidencialidade dos Dados Pessoais, inclusive no no seu armazenamento e transmissão, sempre considerando o estado da técnica disponível.</p>
 <p>7.1. Os Dados Pessoais dos clientes ou potenciais clientes serão compartilhados pelo CORRESPONDENTE ao BANCO, sempre em observância e cumprimento ao estabelecido neste clausulado.</p>
 <p>7.2. Compromete-se o CORRESPONDENTE a observar os princípios de proteção de Dados Pessoais, em especial o da transparência e o da necessidade, perante o Titular, devendo cumprir o seu dever de informação, inclusive em relação ao compartilhamento, em benefício do Titular, dos Dados Pessoais coletados com o BANCO ou demais bancos e seguradoras que realizem operações financeiras ligadas à finalidade ora pretendida.</p>
+      </div>
+      <div class="wl-page">
 <p>8. O CORRESPONDENTE deverá manter registro das operações de tratamento de Dados Pessoais que realizar, bem como implementar medidas técnicas e organizacionais necessárias para proteger os Dados contra a destruição, acidental ou ilícita, a perda, a alteração, a comunicação, a difusão ou o acesso não autorizado, além de garantir que o ambiente (seja ele físico ou lógico) utilizado por ela para o tratamento de Dados Pessoais são estruturados de forma a atender os requisitos de segurança, aos padrões de boas práticas e de governança e aos princípios gerais previstos em lei e nas demais normas regulamentadoras aplicáveis.</p>
 <p>9. O CORRESPONDENTE compromete-se a não realizar quaisquer cópias não autorizadas dos Dados obtidos junto ao BANCO, seja em ambiente digital ou físico.</p>
 <p>10. Cada Parte é responsável por garantir o exercício e cumprimentos dos direitos dos Titulares, em observância à legislação de proteção de dados pessoais, mas não se limitando a:</p>
@@ -1880,13 +1896,13 @@
 <p>11. A Parte deverá notificar a outra Parte, em até 24 (vinte e quatro) horas de (i) qualquer não cumprimento (ainda que suspeito) das disposições legais relativas à proteção de Dados Pessoais; (ii) qualquer descumprimento das obrigações contratuais relativas ao tratamento dos Dados Pessoais; ou (iii) qualquer violação de segurança em suas instalações.</p>
 <p>12. As Partes comprometem-se a auxiliar uma a outra com suas obrigações judiciais ou administrativas, de acordo com a Lei Geral de Proteção de Dados Pessoais e demais normas aplicáveis, fornecendo informações relevantes disponíveis e qualquer outra assistência para documentar e eliminar a causa e os riscos impostos por quaisquer violações de segurança.</p>
 <p>13. O BANCO terá o direito de acompanhar, monitorar, auditar e fiscalizar a conformidade do CORRESPONDENTE com as obrigações de proteção de Dados Pessoais, sem que isso implique em</p>
-
 <p>qualquer diminuição de responsabilidade que o CORRESPONDENTE possui perante a Lei e este Contrato.</p>
 <p>14. O CORRESPONDENTE não deverá guardar, reter ou armazenar os Dados Pessoais que vier a ter acesso em decorrência do objeto deste instrumento em caso de término do Contrato, seja por rescisão ou pelo fim do tempo de vigência, comprometendo-se a eliminá-lo, de maneira segura, em até 30 (trinta) dias contados do término da relação contratual.</p>
+      </div>
+      <div class="wl-page">
 <p>15. Caso exista modificação dos textos legais acima indicados ou de qualquer outro de forma que exija modificações na estrutura da execução deste Contrato, as Partes deverão se adequar às condições vigentes. Se houver alguma disposição que impeça a continuidade do Contrato conforme as disposições acordadas, o BANCO poderá rescindir este instrumento sem qualquer penalidade, apurando-se os valores devidos até a data da rescisão.</p>
 <p>15.1. Se qualquer legislação nacional ou internacional aplicável ao tratamento de Dados Pessoais no âmbito do Contrato vier a exigir adequação de processos e/ou instrumentos contratuais por forma ou meio determinado, as Partes desde já concordam em celebrar termo aditivo escrito neste sentido.</p>
 <p>16. Fica assegurado ao BANCO, nos termos da lei, o direito de regresso em face do CORRESPONDENTE diante de eventuais danos causados por este em decorrência do descumprimento das obrigações aqui assumidas em relação à proteção de Dados Pessoais.</p>
-
       </div>
     
     </div>
